@@ -28,7 +28,7 @@
 
 
 <br>
-
+<br>
 
 ---
 
@@ -53,6 +53,7 @@
 <img align="left" alt="GitHub" width="46px" src="https://raw.githubusercontent.com/github/explore/78df643247d429f6cc873026c0622819ad797942/topics/github/github.png" />
 
 
+<br>
 <br>
 
 
@@ -79,7 +80,7 @@
 
 
 <p align="center">
-<img  alt="GIF" src="https://i.gifer.com/39Cg.gif?raw=true" width="800" height="520" />
+<img  alt="GIF"  src="https://i.gifer.com/39Cg.gif?raw=true" width="800" height="520" />
 </p>
 
 
