@@ -1,6 +1,8 @@
 <p align="right">
 <img alt="GIF" src="https://miro.medium.com/max/700/1*W5e7CK14sPqWZnLJhvaCCw.gif?raw=true" width="200" height="120" />
 </p>
+
+
 ### Hello World, I'm Artyom  👋
 
 ---
@@ -24,7 +26,9 @@
 
 [<img align="left" alt="holisitc_developer | LinkedIn" width="42px" src="https://visualpharm.com/assets/748/Vk.com-595b40b65ba036ed117d4639.svg" />](https://vk.com/id58625695)
 
+
 <br>
+
 
 ---
 
@@ -48,7 +52,9 @@
 
 <img align="left" alt="GitHub" width="46px" src="https://raw.githubusercontent.com/github/explore/78df643247d429f6cc873026c0622819ad797942/topics/github/github.png" />
 
+
 <br>
+
 
 ---
 
@@ -67,6 +73,11 @@
 </details>
 
 ---
+
+<br>
+
+
+
 <p align="center">
 <img  alt="GIF" src="https://i.gifer.com/39Cg.gif?raw=true" width="800" height="520" />
 </p>
