@@ -1,3 +1,29 @@
+@font-face {
+    font-family: "Calibri";
+    src: url("../Task-2/Fonts/Calibri.eot");
+    src: local("Calibri"), url("Calibri.eot?#iefix") format("embedded-opentype"), url("Calibri.woff2") format("woff2"),
+        url("Calibri.woff") format("woff"), url("Calibri.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Calibri";
+    src: url("../Task-2/Fonts/Calibri-Bold.eot");
+    src: local("Calibri Bold"), local("Calibri-Bold"), url("Calibri-Bold.eot?#iefix") format("embedded-opentype"),
+        url("Calibri-Bold.woff2") format("woff2"), url("Calibri-Bold.woff") format("woff"),
+        url("Calibri-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Calibri";
+    src: url("../Task-2/Fonts/Calibri-Light.eot");
+    src: local("Calibri Light"), local("Calibri-Light"), url("Calibri-Light.eot?#iefix") format("embedded-opentype"),
+        url("Calibri-Light.woff2") format("woff2"), url("Calibri-Light.woff") format("woff"),
+        url("Calibri-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
 * {
     padding: 0;
     border: 0;
@@ -82,8 +108,10 @@ h6 {
 .content {
     width: 70%;
     height: 85%;
+    font-family: "Calibri";
     background-color: #ffffff;
     border-radius: 20px;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: space-between;
 }
@@ -99,28 +127,33 @@ h1 {
     font-size: 40px;
     font-weight: 600;
 }
-.fab {
-    margin-top: 30px;
-    width: 20px;
-    height: 20px;
-    color: #1a2e35;
+.icons {
+    width: 200px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.circle {
+    width: 40px;
+    height: 40px;
     font-size: 20px;
+    color: #1a2e35;
     border: 1px solid #1a2e35;
-    padding: 10px;
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: all 0.4s;
 }
-.fab-1 {
-    margin-right: 25px;
-}
-.fab-1:last-child {
-    margin-right: 0px;
-}
-.fab:hover {
-    color: #fd5353;
+.circle:hover {
     border: 1px solid #fd5353;
+    color: #fd5353;
     transition: all 0.4s;
 }
+.circle .fab {
+    line-height: 100%;
+}
+
 .text {
     margin-top: 15px;
     font-size: 20px;
@@ -143,13 +176,13 @@ form {
     padding-left: 40px;
     font-size: 20px;
     background-color: #f7f8f9;
-    transition: all 0.3s;
+    transition: all 0.4s;
 }
 .enter:focus {
     background-color: #ffffff;
     color: #1a2e35;
-    border: 1px solid #1a2e35;
-    transition: all 0.3s;
+    border: 1px solid #fd5353;
+    transition: all 0.4s;
 }
 .enter::placeholder {
     font-size: 20px;
@@ -174,20 +207,69 @@ form {
     color: #1a2e35;
 }
 .gender-check {
-    transform: scale(1.3);
+    display: none;
+}
+.gender-icon {
+    position: relative;
+    top: 2px;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #fd5353;
+    border-radius: 50%;
+    background-color: #fd5353;
+}
+.gender-icon::before {
+    content: "";
+    color: #ffebcd;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 6px;
+    height: 6px;
+    background-color: #ffebcd;
+    border-radius: 50%;
+    opacity: 0;
+    transition: 0.3s;
+}
+.gender-check:checked + .gender-icon::before {
+    opacity: 1;
 }
 .checkbox {
     margin-top: 5%;
     font-size: 20px;
 }
+.checkbox-del {
+    display: none;
+}
+.checkbox-icon {
+    position: relative;
+    top: 5px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #fd5353;
+    background-color: #fd5353;
+}
+.checkbox-icon::before {
+    content: "\2714";
+    color: #ffebcd;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: 0.3s;
+}
+.checkbox-del:checked + .checkbox-icon::before {
+    opacity: 1;
+}
 .checkbox-text-1 {
     color: #fd5353;
 }
-.checkbox-icon {
-    transform: scale(1.5);
-    margin-right: 20px;
-    color: #fd5353;
-}
+
 .buttons {
     width: 440px;
     margin-top: 20px;
@@ -196,10 +278,10 @@ form {
     justify-content: space-between;
 }
 .btn-1 {
-    border: 1px solid #fd5353;
-    border-radius: 15px;
     height: 60px;
     width: 200px;
+    border: 1px solid #fd5353;
+    border-radius: 15px;
     background-color: #ffffff;
     color: #fd5353;
     font-size: 18px;
