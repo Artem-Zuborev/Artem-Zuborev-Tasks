@@ -72,12 +72,15 @@ h6 {
     font-weight: 400;
 }
 .loader {
-    animation: 7s 1 del;
+    animation: 5s 1 del;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
 @keyframes del {
     0% {
+        opacity: 1;
+    }
+    75% {
         opacity: 1;
     }
     100% {
