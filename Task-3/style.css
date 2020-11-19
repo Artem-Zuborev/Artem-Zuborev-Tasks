@@ -144,8 +144,10 @@ h6 {
     }
 }
 .wrapper-main {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
+        sans-serif;
     padding: 0 10px 0 10px;
-    background-color: #deb887b2;
+    background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
     animation: 5s 1 main;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
@@ -180,9 +182,15 @@ header {
     padding: 10px;
     border: 3px solid #f5f5f5;
     border-radius: 15px 0 15px 0;
-    background-color: #0080804b;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+        170deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(9, 115, 121, 0.5438550420168067) 35%,
+        rgba(0, 212, 255, 1) 100%
+    );
     box-sizing: border-box;
-    color: #473030e8;
+    color: #ffffff;
     font-size: 16px;
     letter-spacing: 2px;
     transition: all 0.3s;
@@ -196,6 +204,7 @@ header {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    opacity: 0.8;
     height: 400px;
     padding: 30px 30px 0 0;
 }
@@ -204,7 +213,9 @@ header {
     line-height: 30px;
     letter-spacing: 1px;
     text-align: right;
-    color: #f7f5f1;
+    color: #faf9f6;
+    opacity: 1;
+    z-index: 2;
     float: right;
 }
 .info {
@@ -219,10 +230,13 @@ header {
 .info-block__text {
     width: 400px;
     margin-right: 60px;
+    font-style: italic;
 }
 .h {
+    color: rgb(31, 6, 6);
     font-size: 18px;
     font-weight: 600;
+    font-style: normal;
     margin-bottom: 15px;
 }
 img {
@@ -230,12 +244,14 @@ img {
     height: 200px;
 }
 footer {
+    font-family: "Times New Roman", Times, serif;
     margin: 20px 0 0 0;
     height: 75px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #0080804b;
+    background: rgb(34, 193, 195);
+    background: linear-gradient(284deg, rgba(34, 193, 195, 1) 0%, rgba(35, 16, 212, 0.8631827731092436) 100%);
     border-radius: 25px 0 25px 0;
 }
 @media (max-width: 1350px) {
@@ -248,7 +264,6 @@ footer {
 @media (max-width: 725px) {
     .info-block__text {
         width: 200px;
-        margin-right: 20px;
     }
 }
 @media (max-width: 560px) {
@@ -261,11 +276,35 @@ footer {
         margin-right: 0px;
     }
 }
-@media (max-width: 450px) {
+@media (max-width: 480px) {
     .info-block {
+        flex-wrap: nowrap;
         flex-direction: column-reverse;
+        align-items: center;
+        margin-right: 15px;
+    }
+    .info-block__text {
+        margin-right: 0px;
     }
     .h {
         margin-top: 10px;
+    }
+    .ring {
+        width: 50px;
+        height: 50px;
+    }
+    .ring-2 {
+        width: 100px;
+        height: 100px;
+    }
+    .ring-3 {
+        width: 150px;
+        height: 150px;
+    }
+    .text {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 0.5em;
     }
 }
