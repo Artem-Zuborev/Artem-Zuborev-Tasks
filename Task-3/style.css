@@ -1,0 +1,310 @@
+* {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+*,
+*:before*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+:focus,
+:active {
+    outline: none;
+}
+a:focus,
+a:active {
+    outline: none;
+}
+nav,
+footer,
+header,
+aside {
+    display: block;
+}
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+input,
+button,
+textarea {
+    font-family: inherit;
+}
+input::-ms-clear {
+    display: none;
+}
+button {
+    cursor: pointer;
+}
+button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+a,
+a:visited {
+    text-decoration: none;
+}
+a :hover {
+    text-decoration: none;
+}
+ul li {
+    list-style: none;
+}
+img {
+    vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: 400;
+}
+.loader {
+    animation: 5s 1 del;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.ring {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 4px 0 #262626;
+    background: transparent;
+    animation: preloader 1s linear infinite;
+}
+.ring-2 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    box-shadow: 0 4px #262626;
+    background: transparent;
+    animation: preloader 1s linear infinite;
+}
+.ring-3 {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    box-shadow: 0 -4px #262626;
+    background: transparent;
+    animation: preloader 1s linear infinite;
+}
+.text {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    color: #262626;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    line-height: 100px;
+    font-size: 1em;
+    background: transparent;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+@keyframes preloader {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes del {
+    0% {
+        opacity: 1;
+        z-index: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        z-index: -100;
+        display: none;
+    }
+}
+.wrapper-main {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
+        sans-serif;
+    padding: 0 10px 0 10px;
+    background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+    animation: 5s 1 main;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+@keyframes main {
+    0% {
+        opacity: 0;
+        z-index: -100;
+    }
+    50% {
+        opacity: 0.02;
+    }
+    100% {
+        opacity: 1;
+        z-index: 1;
+        display: inherit;
+    }
+}
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+header {
+    box-sizing: border-box;
+    padding: 30px 0 30px 0;
+}
+.menu {
+    display: flex;
+}
+.menu__items {
+    margin-right: 20px;
+    padding: 10px;
+    border: 3px solid #f5f5f5;
+    border-radius: 15px 0 15px 0;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+        170deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(9, 115, 121, 0.5438550420168067) 35%,
+        rgba(0, 212, 255, 1) 100%
+    );
+    box-sizing: border-box;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+}
+.menu__items:hover {
+    border-radius: 0 15px 0 15px;
+    transition: all 0.3s;
+}
+.wrapper-1 {
+    background-image: url(../Task-3/Assets/antonio-gaudi.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.8;
+    height: 400px;
+    padding: 30px 30px 0 0;
+}
+.wrapper-1__text {
+    font-size: 25px;
+    line-height: 30px;
+    letter-spacing: 1px;
+    text-align: right;
+    color: #faf9f6;
+    opacity: 1;
+    z-index: 2;
+    float: right;
+}
+.info {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.info-block {
+    display: flex;
+    margin-top: 25px;
+}
+.info-block__text {
+    width: 400px;
+    margin-right: 60px;
+    font-style: italic;
+}
+.h {
+    color: rgb(31, 6, 6);
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+    margin-bottom: 15px;
+}
+img {
+    width: 200px;
+    height: 200px;
+}
+footer {
+    font-family: "Times New Roman", Times, serif;
+    margin: 20px 0 0 0;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(34, 193, 195);
+    background: linear-gradient(284deg, rgba(34, 193, 195, 1) 0%, rgba(35, 16, 212, 0.8631827731092436) 100%);
+    border-radius: 25px 0 25px 0;
+}
+@media (max-width: 1350px) {
+    .info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+@media (max-width: 725px) {
+    .info-block__text {
+        width: 200px;
+    }
+}
+@media (max-width: 560px) {
+    .menu {
+        flex-direction: column;
+    }
+    .menu__items {
+        text-align: center;
+        margin-top: 10px;
+        margin-right: 0px;
+    }
+}
+@media (max-width: 480px) {
+    .info-block {
+        flex-wrap: nowrap;
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-right: 15px;
+    }
+    .info-block__text {
+        margin-right: 0px;
+    }
+    .h {
+        margin-top: 10px;
+    }
+    .ring {
+        width: 50px;
+        height: 50px;
+    }
+    .ring-2 {
+        width: 100px;
+        height: 100px;
+    }
+    .ring-3 {
+        width: 150px;
+        height: 150px;
+    }
+    .text {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 0.5em;
+    }
+}
