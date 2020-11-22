@@ -1,0 +1,36 @@
+@import url("../Task-4/Styles/zero_style.css");
+@import url("../Task-4/Styles/header.css");
+@import url("../Task-4/Styles/main-info.css");
+@import url("../Task-4/Styles/section-1.css");
+@import url("../Task-4/Styles/section-2.css");
+@import url("../Task-4/Styles/section-3.css");
+* {
+    font-family: "Hind", sans-serif;
+}
+.wrapper-1 {
+    background-image: url("../Task-4/Assets/1920x1080/01.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
+.wrapper-2 {
+    background-color: #fafafa;
+    min-height: 500px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+}
+.wrapper-3 {
+    background-color: #ffffff;
+    height: 450px;
+    padding: 40px 0;
+}
+.wrapper-4 {
+    background-color: #fafafa;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
