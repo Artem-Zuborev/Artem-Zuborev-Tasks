@@ -4,6 +4,7 @@
 @import url("../Task-4/Styles/section-1.css");
 @import url("../Task-4/Styles/section-2.css");
 @import url("../Task-4/Styles/section-3.css");
+@import url("../Task-4/Styles/section-4.css");
 * {
     font-family: "Hind", sans-serif;
 }
@@ -33,4 +34,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.wrapper-5 {
+    background-color: #ffffff;
+    height: 500px;
 }
