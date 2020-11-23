@@ -1,6 +1,5 @@
 .main-info {
     height: 45%;
-    padding: 0 10% 0 10%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -21,6 +20,7 @@
 }
 .main-info__text--position {
     margin-bottom: 30px;
+    margin-top: 40px;
 }
 .btn {
     width: 120px;
@@ -46,9 +46,7 @@
     justify-content: space-between;
 }
 .circle--position {
-    position: absolute;
-    bottom: 100px;
-    left: 10%;
+    margin-top: 10%;
 }
 .circle__one {
     width: 15px;
