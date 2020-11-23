@@ -1,5 +1,4 @@
 .section-2 {
-    padding: 0 10%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -10,8 +9,15 @@
     font-weight: 600;
     color: #4f5668;
 }
+.section-2__h2--position {
+    margin-bottom: 25px;
+    margin-top: 20px;
+}
 .section-2__text {
     color: #afaaae;
+}
+.section-2__text--position {
+    margin-bottom: 15px;
 }
 .card {
     height: 350px;
@@ -21,6 +27,7 @@
 }
 .cards {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 .card__h2 {
