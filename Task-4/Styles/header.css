@@ -12,25 +12,27 @@
     position: fixed;
     border-bottom: 3px solid rgba(128, 128, 128, 0.3);
 }
-.wrapper-1:not(:hover) .header, .header:hover{
+.wrapper-1:not(:hover) .header,
+.header:hover {
     background-color: #ffffff;
-    color:  #50525f;
-    transition: .3s;
+    color: #50525f;
+    border-bottom: none;
+    transition: 0.3s;
     z-index: 100;
 }
-.wrapper-1:not(:hover) .menu__child, .menu__child:hover{
-    color:  #50525f;
+.wrapper-1:not(:hover) .menu__child,
+.menu__child:hover {
+    color: #50525f;
     z-index: 100;
- }
- .header:hover .menu__child{
-    color:  #50525f;
+}
+.header:hover .menu__child {
+    color: #50525f;
     z-index: 100;
- }
+}
 .menu {
     display: flex;
     justify-content: space-between;
     width: 40%;
-    
 }
 .menu__child {
     color: #ffffff;
@@ -38,7 +40,6 @@
     text-transform: uppercase;
     font-size: 15px;
 }
-
 
 .menu__item--hover:hover .menu__symbol-deactive {
     opacity: 1;
