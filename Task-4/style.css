@@ -6,6 +6,8 @@
 @import url("../Task-4/Styles/section-3.css");
 @import url("../Task-4/Styles/section-4.css");
 @import url("../Task-4/Styles/section-5.css");
+@import url("../Task-4/Styles/section-6.css");
+@import url("../Task-4/Styles/section-7.css");
 * {
     font-family: "Hind", sans-serif;
 }
@@ -52,8 +54,19 @@
 }
 .wrapper-6 {
     width: 100%;
+    height: 550px;
     background-color: #fafafa;
-    height: 500px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
+}
+.wrapper-7 {
+    width: 100%;
+    height: 400px;
+    background-color: #ffffff;
+}
+.wrapper-8 {
+    width: 100%;
+    height: 600px;
+    background-color: #fafafa;
 }
