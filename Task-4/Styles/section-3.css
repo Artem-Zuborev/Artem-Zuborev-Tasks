@@ -5,3 +5,11 @@
     justify-content: space-between;
     align-items: center;
 }
+.section-3 img {
+    opacity: 0.5;
+    transition: 0.4s;
+}
+.section-3 img:hover {
+    opacity: 1;
+    transition: 0.4s;
+}
