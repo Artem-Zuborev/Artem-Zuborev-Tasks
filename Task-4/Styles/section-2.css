@@ -33,6 +33,11 @@
 .card__h2 {
     font-size: 25px;
     color: #4f5668;
+    transition: 0.3s;
+}
+.card__h2:hover {
+    opacity: 0.7;
+    transition: 0.3s;
 }
 .card__span {
     color: #afaaae;
@@ -48,6 +53,11 @@
 .read-more {
     font-size: 20px;
     color: #7f859d;
+    transition: 0.3s;
+}
+.read-more:hover {
+    opacity: 0.7;
+    transition: 0.3s;
 }
 .read-more-symbol {
     font-size: 25px;
