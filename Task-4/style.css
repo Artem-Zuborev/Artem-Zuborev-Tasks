@@ -16,6 +16,12 @@
     padding: 0 10px;
     margin: 0 auto;
 }
+.wrapper-1__container {
+    width: 1280px;
+    height: 100%;
+    padding: 0 10px;
+    margin: 0 auto;
+}
 .wrapper-1 {
     background-image: url("../Task-4/Assets/1920x1080/01.jpg");
     background-position: center;
