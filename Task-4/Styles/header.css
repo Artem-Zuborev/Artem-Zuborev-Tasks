@@ -48,6 +48,12 @@
     justify-content: space-between;
     width: 40%;
 }
+#menu__toggle {
+    display: none;
+}
+.hamburger-menu {
+    display: none;
+}
 .menu__child {
     color: #ffffff;
     font-family: "Hind", sans-serif;
