@@ -10,6 +10,7 @@
 @import url("../Task-4/Styles/section-7.css");
 @import url("../Task-4/Styles/section-8.css");
 @import url("../Task-4/Styles/footer.css");
+@import url("../Task-4/Styles/media.css");
 * {
     font-family: "Hind", sans-serif;
 }
@@ -61,7 +62,6 @@ html {
     width: 100%;
     min-height: 500px;
     background-color: #ffffff;
-    height: 450px;
 }
 .wrapper-4 {
     width: 100%;
