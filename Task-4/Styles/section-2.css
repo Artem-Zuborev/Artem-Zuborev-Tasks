@@ -25,6 +25,10 @@
     flex-direction: column;
     justify-content: space-between;
 }
+.card img {
+    width: 350px;
+    height: 200px;
+}
 .cards {
     display: flex;
     flex-wrap: wrap;
