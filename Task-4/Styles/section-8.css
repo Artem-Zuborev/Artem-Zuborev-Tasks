@@ -1,0 +1,70 @@
+.section-8 {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px;
+}
+.section-8--position {
+    margin-bottom: 85px;
+}
+.section-8__menu {
+    display: flex;
+    justify-content: space-between;
+    width: 250px;
+}
+.menu__link--style {
+    color: #afaaae;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.menu__link--style:hover {
+    color: #ffffff;
+}
+.menu__item--position {
+    margin-bottom: 20px;
+}
+.section-8__form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+.section-8__form--position {
+    margin-right: 150px;
+}
+.form__h2--font {
+    font-size: 25px;
+    font-weight: 600;
+    color: #ffffff;
+}
+.form__h2-position {
+    margin-bottom: 15px;
+}
+.form__input {
+    padding: 8px;
+}
+.form__input--style:focus::placeholder {
+    color: #6e6c6e;
+}
+.form__input--style {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+}
+.form__input--style::placeholder {
+    color: #afaaae;
+}
+.form__input--position {
+    margin-bottom: 15px;
+}
+.form__btn {
+    width: 100px;
+    height: 40px;
+}
+.btn--fone {
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: #17bed1;
+    color: #ffffff;
+    transition: 0.3s;
+}
+.btn--fone:hover {
+    background-color: #43e0f1;
+}
