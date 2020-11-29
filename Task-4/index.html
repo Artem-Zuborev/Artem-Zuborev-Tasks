@@ -17,6 +17,32 @@
             <div class="header__container">
                 <a href="" class="logo">
                 </a>
+                <div class="hamburger-menu">
+                    <input id="menu__toggle" type="checkbox" />
+                    <label class="menu__btn" for="menu__toggle">
+                        <span></span>
+                    </label>
+                    <ul class="menu menu--right">
+                        <li class="menu__item"><a class="menu__child menu__item--hover active" href="index.html"><span
+                                    class="menu__symbol-active menu__symbol-active--position">&mdash;</span>Home</a>
+                        </li>
+                        <li class="menu__item"><a class="menu__child menu__item--hover" href=""><span
+                                    class="menu__symbol-deactive menu__symbol-active--position">&mdash;</span>Pricing</a>
+                        </li>
+                        <li class="menu__item"><a class="menu__child menu__item--hover" href=""><span
+                                    class="menu__symbol-deactive menu__symbol-active--position">&mdash;</span>About</a>
+                        </li>
+                        <li class="menu__item"><a class="menu__child menu__item--hover" href=""><span
+                                    class="menu__symbol-deactive menu__symbol-active--position">&mdash;</span>Products</a>
+                        </li>
+                        <li class="menu__item"><a class="menu__child menu__item--hover" href=""><span
+                                    class="menu__symbol-deactive menu__symbol-active--position">&mdash;</span>FAQ</a>
+                        </li>
+                        <li class="menu__item"><a class="menu__child menu__item--hover" href=""><span
+                                    class="menu__symbol-deactive menu__symbol-active--position">&mdash;</span>Contact</a>
+                        </li>
+                    </ul>
+                </div>
                 <ul class="menu menu--right">
                     <li class="menu__item"><a class="menu__child menu__item--hover active" href="index.html"><span
                                 class="menu__symbol-active menu__symbol-active--position">&mdash;</span>Home</a>
@@ -25,17 +51,18 @@
                                 class="menu__symbol-deactive menu__symbol-active--position">&mdash;</span>Pricing</a>
                     </li>
                     <li class="menu__item"><a class="menu__child menu__item--hover" href=""><span
-                                class="menu__symbol-deactive menu__symbol-active--position">&mdash;</span>About</a></li>
+                                class="menu__symbol-deactive menu__symbol-active--position">&mdash;</span>About</a>
+                    </li>
                     <li class="menu__item"><a class="menu__child menu__item--hover" href=""><span
                                 class="menu__symbol-deactive menu__symbol-active--position">&mdash;</span>Products</a>
                     </li>
                     <li class="menu__item"><a class="menu__child menu__item--hover" href=""><span
-                                class="menu__symbol-deactive menu__symbol-active--position">&mdash;</span>FAQ</a></li>
+                                class="menu__symbol-deactive menu__symbol-active--position">&mdash;</span>FAQ</a>
+                    </li>
                     <li class="menu__item"><a class="menu__child menu__item--hover" href=""><span
                                 class="menu__symbol-deactive menu__symbol-active--position">&mdash;</span>Contact</a>
                     </li>
                 </ul>
-            </div>
         </header>
         <input id="slide-dot-1" type="radio" name="slides" checked>
         <input id="slide-dot-2" type="radio" name="slides">
@@ -125,7 +152,7 @@
                 <div class="cards">
                     <div class="card">
                         <div>
-                            <img src="../Task-4/Assets/970x647/01.jpg" alt="" style="width: 350px; height: 200px;">
+                            <img src="../Task-4/Assets/970x647/01.jpg" alt="">
                         </div>
                         <div>
                             <a href="" class="card__h2 card__h2--position">Triangle Roof</a> <span
@@ -138,7 +165,7 @@
                     </div>
                     <div class="card">
                         <div>
-                            <img src="../Task-4/Assets/970x647/02.jpg" alt="" style="width: 350px; height: 200px;">
+                            <img src="../Task-4/Assets/970x647/02.jpg" alt="">
                         </div>
                         <div>
                             <a href="" class="card__h2 card__h2--position">Curved Corners</a><span
@@ -151,7 +178,7 @@
                     </div>
                     <div class="card">
                         <div>
-                            <img src="../Task-4/Assets/970x647/03.jpg" alt="" style="width: 350px; height: 200px;">
+                            <img src="../Task-4/Assets/970x647/03.jpg" alt="">
                         </div>
                         <div>
                             <a href="" class="card__h2 card__h2--position">Bird On Green</a><span
@@ -172,16 +199,16 @@
                 <a href="">
                     <img src="../Task-4/Assets/clients/01.png" alt="sorry">
                 </a>
-                <a href="">
+                <a class="section-3__picture-2" href="">
                     <img src="../Task-4/Assets/clients/02.png" alt="sorry">
                 </a>
-                <a href="">
+                <a class="section-3__picture-3" href="">
                     <img src="../Task-4/Assets/clients/03.png" alt="sorry">
                 </a>
-                <a href="">
+                <a class="section-3__picture-4" href="">
                     <img src="../Task-4/Assets/clients/04.png" alt="sorry">
                 </a>
-                <a href="">
+                <a class="section-3__picture-5" href="">
                     <img src="../Task-4/Assets/clients/05.png" alt="sorry">
                 </a>
             </section>
@@ -291,16 +318,21 @@
     </div>
     <div class="wrapper-7">
         <section class="section-6">
-            <div class="section-6__block-1 section-6__block-1--position">
-                <h2 class="block-1__h2 block-1__h2--position">Our Clients</h2>
-                <p class="block-1__text block-1__text--position">Lorem ipsum dolor sit amet consectetur adipiscing elit
-                    sed tempor incididunt ut
-                    laboret dolore magna
-                    aliqua enim minim veniam exercitation ipsum dolor sit amet consectetur adipiscing elit sed tempor
-                    incididunt ut laboret dolore magna aliqua enim minim veniam exercitation</p>
-                <p class="block-1__text">Ipsum dolor sit amet consectetur adipiscing elit sed tempor incididut ut sead
-                    laboret dolore magna
-                    aliqua enim minim veniam exercitation ipsum dolor sit amet consectetur adipiscing</p>
+            <div class="section-6__container">
+                <div class="section-6__block-1 section-6__block-1--position">
+                    <h2 class="block-1__h2 block-1__h2--position">Our Clients</h2>
+                    <p class="block-1__text block-1__text--position">Lorem ipsum dolor sit amet consectetur adipiscing
+                        elit
+                        sed tempor incididunt ut
+                        laboret dolore magna
+                        aliqua enim minim veniam exercitation ipsum dolor sit amet consectetur adipiscing elit sed
+                        tempor
+                        incididunt ut laboret dolore magna aliqua enim minim veniam exercitation</p>
+                    <p class="block-1__text">Ipsum dolor sit amet consectetur adipiscing elit sed tempor incididut ut
+                        sead
+                        laboret dolore magna
+                        aliqua enim minim veniam exercitation ipsum dolor sit amet consectetur adipiscing</p>
+                </div>
             </div>
             <div class="section-6__block-2">
             </div>
