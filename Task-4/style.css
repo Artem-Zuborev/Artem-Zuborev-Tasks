@@ -1,14 +1,14 @@
-@import url("../Task-4/Styles/zero_style.css");
+@import url("../Task-4/Styles/normalize.css");
 @import url("../Task-4/Styles/header.css");
 @import url("../Task-4/Styles/main-info.css");
-@import url("../Task-4/Styles/section-1.css");
-@import url("../Task-4/Styles/section-2.css");
-@import url("../Task-4/Styles/section-3.css");
-@import url("../Task-4/Styles/section-4.css");
-@import url("../Task-4/Styles/section-5.css");
-@import url("../Task-4/Styles/section-6.css");
-@import url("../Task-4/Styles/section-7.css");
-@import url("../Task-4/Styles/section-8.css");
+@import url("../Task-4/Styles/cards.css");
+@import url("../Task-4/Styles/latest-products.css");
+@import url("../Task-4/Styles/logo-product.css");
+@import url("../Task-4/Styles/customer-reviews.css");
+@import url("../Task-4/Styles/starter-kit.css");
+@import url("../Task-4/Styles/our-clients.css");
+@import url("../Task-4/Styles/showcase.css");
+@import url("../Task-4/Styles/send-us.css");
 @import url("../Task-4/Styles/footer.css");
 @import url("../Task-4/Styles/media.css");
 * {
@@ -97,7 +97,8 @@ html {
 }
 .wrapper-9 {
     width: 100%;
-    height: 623px;
+    -moz-height: 670px;
+    -webkit-height: 623px;
     background-image: url("../Task-4/Assets/1920x1080/03.jpg");
     background-position: center;
     background-repeat: no-repeat;

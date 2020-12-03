@@ -1,9 +1,9 @@
-.section-5 {
+.starter-kit {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.section-5__price-card {
+.starter-kit__price-card {
     padding: 60px 40px;
     width: 340px;
     height: 300px;
@@ -14,7 +14,7 @@
 .price-card-main--style {
     background-color: #ffffff;
 }
-.section-5__price-card-main {
+.starter-kit__price-card-main {
     padding: 60px 40px;
     width: 340px;
     height: 350px;

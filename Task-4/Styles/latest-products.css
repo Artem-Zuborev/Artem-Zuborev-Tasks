@@ -1,22 +1,22 @@
-.section-2 {
+.latest-products {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-.section-2__h2 {
+.latest-products__h2 {
     font-size: 35px;
     font-weight: 600;
     color: #4f5668;
 }
-.section-2__h2--position {
+.latest-products__h2--position {
     margin-bottom: 25px;
     margin-top: 20px;
 }
-.section-2__text {
+.latest-products__text {
     color: #afaaae;
 }
-.section-2__text--position {
+.latest-products__text--position {
     margin-bottom: 15px;
 }
 .card {

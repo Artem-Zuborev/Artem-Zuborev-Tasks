@@ -14,7 +14,7 @@
     .circle--position {
         left: 153px;
     }
-    .section-6__block-1--position {
+    .our-clients__block-1--position {
         margin-left: 151px;
     }
     .card-info {
@@ -46,10 +46,10 @@
     .card__text {
         width: 260px;
     }
-    .section-3__picture-5 {
+    .logo-product__picture-5 {
         display: none;
     }
-    .section-6__block-1--position {
+    .our-clients__block-1--position {
         margin-left: 70px;
     }
     .block-1__text {
@@ -59,7 +59,7 @@
         width: 960px;
     }
 }
-@media screen and (max-width: 910px) {
+@media screen and (max-width: 993px) {
     .container {
         width: 800px !important;
     }
@@ -90,30 +90,30 @@
     .card__h2 {
         font-size: 21px;
     }
-    .section-3__picture-4 {
+    .logo-product__picture-4 {
         display: none;
     }
-    .section-5__price-card {
+    .starter-kit__price-card {
         width: 310px;
     }
-    .section-5__price-card-main {
+    .starter-kit__price-card-main {
         width: 290px;
     }
-    .section-6 {
+    .our-clients {
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-    .section-6__block-1--position {
+    .our-clients__block-1--position {
         margin-left: 0px;
     }
-    .section-6__block-2 {
+    .our-clients__block-2 {
         width: 100%;
     }
     .block-1__text {
         width: 100%;
     }
-    .section-6__block-1 {
+    .our-clients__block-1 {
         width: 100%;
     }
     .wrapper-6 {
@@ -122,14 +122,14 @@
     .wrapper-7 {
         height: 700px !important;
     }
-    .section-6__block-1 {
+    .our-clients__block-1 {
         height: 30%;
     }
-    .section-6__container {
+    .our-clients__container {
         width: 800px;
         margin: 0 auto;
     }
-    .section-8__form--position {
+    .send-us__form--position {
         margin-right: 0px;
     }
     .top--position {
@@ -145,8 +145,8 @@
         opacity: 0;
     }
     .menu__btn {
-        display: flex; /* используем flex для центрирования содержимого */
-        align-items: center; /* центрируем содержимое кнопки */
+        display: flex;
+        align-items: center;
         position: fixed;
         top: 40px;
         right: 70px;
@@ -155,7 +155,7 @@
         cursor: pointer;
         z-index: 1003;
     }
-    /* добавляем "гамбургер" */
+
     .menu__btn > span,
     .menu__btn > span::before,
     .menu__btn > span::after {
@@ -186,12 +186,11 @@
         margin: 0;
         padding: 80px 0;
         list-style: none;
-
         background-color: #ffffff;
         box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
         transition: 0.4s;
     }
-    /* элементы меню */
+
     .menu__child {
         display: block;
         padding: 12px 24px;
@@ -224,7 +223,7 @@
         right: 0;
     }
 }
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 830px) {
     .container {
         width: 700px !important;
     }
@@ -234,7 +233,7 @@
     .main-info {
         width: 700px;
     }
-    .section-6__container {
+    .our-clients__container {
         width: 700px;
     }
     .footer__container {
@@ -249,8 +248,12 @@
     .card__h2 {
         font-size: 19px;
     }
+
+    .send-us__form {
+        width: 290px;
+    }
 }
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 724px) {
     .container {
         width: 300px !important;
     }
@@ -260,7 +263,7 @@
     .main-info {
         width: 300px;
     }
-    .section-6__container {
+    .our-clients__container {
         width: 300px;
     }
     .footer__container {
@@ -293,21 +296,21 @@
     .card__h2 {
         font-size: 33px;
     }
-    .section-3__picture-2,
-    .section-3__picture-3 {
+    .logo-product__picture-2,
+    .logo-product__picture-3 {
         display: none;
     }
-    .section-8 {
+    .send-us {
         flex-direction: column !important;
     }
-    .section-5 {
+    .starter-kit {
         flex-direction: column;
     }
-    .section-5__price-card {
+    .starter-kit__price-card {
         width: 300px;
         margin-bottom: 4px;
     }
-    .section-5__price-card-main {
+    .starter-kit__price-card-main {
         width: 300px;
         margin-bottom: 4px;
     }
@@ -332,11 +335,41 @@
         width: 95%;
         margin-bottom: 4px;
     }
-    .section-8__form {
+    .send-us__form {
         width: 290px;
     }
     .footer-contant__text--style {
         font-size: 16px;
         width: 120px;
+    }
+}
+@media screen and (max-width: 382px) {
+    .container {
+        width: 250px !important;
+    }
+    .header__container {
+        width: 250px;
+    }
+    .main-info {
+        width: 250px;
+    }
+    .our-clients__container {
+        width: 250px;
+    }
+    .footer__container {
+        width: 250px;
+    }
+    .starter-kit__price-card {
+        width: 130px;
+    }
+    .starter-kit__price-card-main {
+        width: 130px;
+    }
+    .send-us__form {
+        width: 250px;
+    }
+    .card-info {
+        padding: 12px;
+        height: 154px;
     }
 }

@@ -1,16 +1,16 @@
-.section-7 {
+.showcase {
     padding: 50px 0;
 }
-.section-7__h2 {
+.showcase__h2 {
     font-size: 25px;
     font-weight: 600;
     color: #4f5668;
 }
-.section-7__h2--position,
-.section-7__p--position {
+.showcase__h2--position,
+.showcase__p--position {
     margin-bottom: 15px;
 }
-.section-7__p {
+.showcase__p {
     color: #afaaae;
     font-size: 16px;
 }

@@ -1,15 +1,15 @@
-.section-3 {
+.logo-product {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
-.section-3 img {
+.logo-product__picture {
     opacity: 0.5;
     transition: 0.4s;
 }
-.section-3 img:hover {
+.logo-product__picture:hover {
     opacity: 1;
     transition: 0.4s;
 }

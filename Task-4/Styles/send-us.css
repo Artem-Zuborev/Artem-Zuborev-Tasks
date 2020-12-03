@@ -1,12 +1,12 @@
-.section-8 {
+.send-us {
     display: flex;
     justify-content: space-between;
     padding-top: 40px;
 }
-.section-8--position {
+.send-us--position {
     margin-bottom: 85px;
 }
-.section-8__menu {
+.send-us__menu {
     display: flex;
     justify-content: space-between;
     width: 250px;
@@ -22,12 +22,12 @@
 .menu__item--position {
     margin-bottom: 20px;
 }
-.section-8__form {
+.send-us__form {
     display: flex;
     flex-direction: column;
     width: 400px;
 }
-.section-8__form--position {
+.send-us__form--position {
     margin-right: 150px;
 }
 .form__h2--font {
