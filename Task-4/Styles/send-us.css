@@ -60,6 +60,9 @@
 }
 .btn--fone {
     font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     text-transform: uppercase;
     background-color: #17bed1;
     color: #ffffff;
