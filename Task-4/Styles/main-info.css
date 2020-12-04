@@ -36,6 +36,9 @@
     color: #ffffff;
     text-transform: uppercase;
     font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .btn--hover {
     transition: 0.3s;
