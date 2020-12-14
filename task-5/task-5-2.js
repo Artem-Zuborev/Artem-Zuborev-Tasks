@@ -1,6 +1,6 @@
 function mapLetters(str) {
-    let mas = [];
-    let newStr = str.toLowerCase().split('');
+    const mas = [];
+    const newStr = str.toLowerCase().split('');
     for (let i = 0; i < newStr.length; i++) {
         if (!mas.includes(newStr[i])) {
             mas.push(newStr[i]);
