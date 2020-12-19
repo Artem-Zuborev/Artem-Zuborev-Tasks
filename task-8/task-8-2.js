@@ -5,7 +5,6 @@ function quicksort(mas) {
     if (mas.length <= 1) {
         return mas;
     }
-
     const pivot = mas[0];
 
     const left = [];
@@ -22,7 +21,7 @@ function quicksort(mas) {
     return quicksort(left).concat(pivot, quicksort(right));
 };
 
-let mas = [23, 45, 16, 37, 3, 99, 22];
+let mas = [3,23,23, 45, 16, 37, 99, 22, 23];
 let newSortedMas = quicksort(mas);
 
-console.log( newSortedMas);
+console.log(newSortedMas);
