@@ -22,7 +22,7 @@ function quicksort(mas) {
     return quicksort(left).concat(pivot, quicksort(right));
 };
 
-var mas = [23, 45, 16, 37, 3, 99, 22];
-var newSortedMas = quicksort(mas);
+let mas = [23, 45, 16, 37, 3, 99, 22];
+let newSortedMas = quicksort(mas);
 
-console.log('Sorted array', newSortedMas);
+console.log( newSortedMas);
