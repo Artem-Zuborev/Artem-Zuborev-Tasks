@@ -339,7 +339,7 @@ class Tree {
         return res;
     }
 
-
+// O(n)
     getNodeById(id) {
         if (this.state.id === id) return this.state;
         let parent = this.state;
@@ -367,6 +367,7 @@ class Tree {
         }
     }
 
+// O(n)
     updateNodeById(id, updatedProperties) {
         let item = this.getNodeById(id);
         if (item) {
@@ -376,6 +377,7 @@ class Tree {
         }
     }
 
+// O(n)
     createNode(id, parentId, newNode) {
         if (this.getNodeById(id)) {
             throw Error('The node is already exist');
@@ -388,6 +390,7 @@ class Tree {
         return parent;
     }
 
+// O(n)
     deleteNode(id) {
         let parent = this.getParent(id);
         parent.children.splice(parent.children.findIndex(item => item.id === id), 1);
@@ -403,6 +406,7 @@ class Tree {
         return this.getNodeById(node.parent_id);
     }
 
+// O(n)
     getSiblings(id) {
         return this.getParent(id).children.filter(item => item.id !== id);
     }
