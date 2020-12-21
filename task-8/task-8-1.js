@@ -383,7 +383,6 @@ class Tree {
             throw Error('The node is already exist');
         }
 
-        newNode.id = id;
         newNode.parent_id = parentId;
         let parent = this.getNodeById(parentId);
         parent.children.push(newNode);
@@ -415,12 +414,13 @@ class Tree {
 const tree = new Tree(flatList, rootId);
 console.log(tree.state);
 console.log(tree.updateNodeById("c24cf51e-7c6c-47d8-a56f-8d11fc7765e7", {name: 'New Name', age: 22}));
-console.log(tree.createNode("c24cf51e-7c6c-47d8-a56f-8d11fc7765e6", "c24cf51e-7c6c-47d8-a56f-8d11fc7765e7", {
+console.log(tree.createNode("3d537081-374e-47f0-aeb8-a9ba9cfe1eb1", "c24cf51e-7c6c-47d8-a56f-8d11fc7765e7", {
     "id": "3d537081-374e-47f0-aeb8-a9ba9cfe1eb1",
-    "parent_id": "c24cf51e-7c6c-47d8-a56f-8d11fc3335e7"
+    "parent_id": null,
+    "children":[]
 }))
 console.log(tree.getParent("3d537081-374e-47f0-aeb8-a9ba9cfe1eb0"));
-console.log(tree.deleteNode("3d537081-374e-47f0-aeb8-a9ba9cfe1eb0"));
+console.log(tree.deleteNode("3d537081-374e-47f0-aeb8-a9ba9cfe1eb1"));
 console.log(tree.getSiblings("3d537081-374e-47f0-aeb8-a9ba9cfe1eb0"))
 
 
