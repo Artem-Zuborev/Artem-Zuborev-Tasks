@@ -12,28 +12,38 @@ html {
 .container {
     width: 100%;
     height: 100vh;
-    background-color: #12121f;
+    background: #091921;
     color: #eee;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .weather {
     display: flex;
     justify-content: center;
     height: 8rem;
 }
+
 .calendar {
     width: 45rem;
     height: 56rem;
-    background-color: #222227;
-    box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    overflow: hidden;
+    z-index: 10;
+    backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .month {
+    position: relative;
     width: 100%;
     height: 16rem;
-    background-color: #167e56;
+    border-radius: 6px;
+    background: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,11 +52,32 @@ html {
     text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
 }
 
-.month i {
+ .prev, .next {
     font-size: 2.5rem;
     cursor: pointer;
 }
+.config{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    font-size: 2rem;
+}
+@-webkit-keyframes rotate {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
 
+.config:hover {
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 3.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    cursor: pointer;
+}
 .month h1 {
     font-size: 3rem;
     font-weight: 400;
@@ -86,6 +117,7 @@ div {
     display: flex;
     flex-wrap: wrap;
     padding: 0.2rem;
+    transition: .4s;
 }
 
 .days div {
@@ -113,4 +145,8 @@ div {
 
 .today {
     background-color: #167e56;
+}
+
+.prev {
+    transition: .4s;
 }
