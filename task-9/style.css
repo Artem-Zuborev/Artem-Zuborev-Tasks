@@ -19,19 +19,14 @@ html {
     align-items: center;
 }
 
-.weather {
-    display: flex;
-    justify-content: center;
-    height: 8rem;
-}
 
 .calendar {
+    position: relative;
     width: 45rem;
     height: 56rem;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 6px;
     overflow: hidden;
-    z-index: 10;
     backdrop-filter: blur(15px);
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     border-left: 1px solid rgba(255, 255, 255, 0.2);
@@ -39,7 +34,7 @@ html {
 }
 
 .month {
-    position: relative;
+
     width: 100%;
     height: 16rem;
     border-radius: 6px;
@@ -52,16 +47,19 @@ html {
     text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
 }
 
- .prev, .next {
+.prev, .next {
     font-size: 2.5rem;
     cursor: pointer;
 }
-.config{
+
+.config {
     position: absolute;
     right: 5px;
     top: 5px;
+    z-index: 100;
     font-size: 2rem;
 }
+
 @-webkit-keyframes rotate {
     from {
         -webkit-transform: rotate(0deg);
@@ -78,12 +76,83 @@ html {
     -webkit-animation-timing-function: linear;
     cursor: pointer;
 }
+
+.settings-menu {
+    position: fixed;
+    top: 1px;
+    right: 3px;
+}
+
+/* скрываем чекбокс */
+#menu__toggle {
+    opacity: 0;
+}
+
+/* контейнер меню */
+.menu__box {
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    text-align: center;
+    background: #213037;
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+}
+
+.menu__box {
+    transition-duration: .4s;
+}
+
+#menu__toggle:checked ~ .menu__box {
+    visibility: visible;
+    right: 0;
+    z-index: 99;
+}
+
+
 .month h1 {
     font-size: 3rem;
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
     margin-bottom: 1rem;
+}
+
+.todo-list {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    bottom: -110%;
+    left: 0;
+    padding: 30px;
+    background: #213037;
+    transition: .4s;
+}
+
+.show {
+    bottom: 0;
+}
+
+.close-icon {
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.close-icon:hover {
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 3.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    cursor: pointer;
 }
 
 .month p,
@@ -112,6 +181,10 @@ div {
     text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
 }
 
+.holiday {
+    color: red;
+}
+
 .days {
     width: 100%;
     display: flex;
@@ -119,6 +192,7 @@ div {
     padding: 0.2rem;
     transition: .4s;
 }
+
 
 .days div {
     font-size: 1.4rem;
@@ -141,6 +215,7 @@ div {
 .prev-date,
 .next-date {
     opacity: 0.5;
+    z-index: -1;
 }
 
 .today {
