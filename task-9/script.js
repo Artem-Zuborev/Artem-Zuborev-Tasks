@@ -4,7 +4,7 @@ const date = new Date();
 const renderCalendar = () => {
     date.setDate(1);
 
-
+    console.log(date.getDay())
     const monthDays = document.querySelector(".days");
 
 
@@ -13,26 +13,26 @@ const renderCalendar = () => {
         date.getMonth() + 1,
         0
     ).getDate();
-
+    console.log(lastDay)
 
     const prevLastDay = new Date(
         date.getFullYear(),
         date.getMonth(),
         0
     ).getDate();
-
+    console.log(prevLastDay)
 
     const firstDayIndex = date.getDay();
-
+    console.log(firstDayIndex)
 
     const lastDayIndex = new Date(
         date.getFullYear(),
         date.getMonth() + 1,
         0
     ).getDay();
+    console.log(lastDayIndex)
 
-
-    const nextDays = 7 - lastDayIndex - 1;
+    const nextDays = 7 - lastDayIndex;
 
 
     const months = [
@@ -50,7 +50,15 @@ const renderCalendar = () => {
         "December",
     ];
 
+    // to do variable
+    const toDoList = document.querySelector(".todo-list");
+    const closeIcon = document.querySelector('.close-icon');
+    let listTask = document.querySelector(".list-task");  // ul
+    const enterTask = document.querySelector(".enter-task") // textarea value
+    const btnAddTask = document.querySelector(".add-task-btn")  // button form
 
+
+    // color month
     document.querySelector(".date h1").innerHTML = months[date.getMonth()];
     if (months[date.getMonth()] === months[0] || months[date.getMonth()] === months[1] || months[date.getMonth()] === months[11]) {
         document.querySelector(".month").style.background = 'rgba(0,153,255,0.4)';
@@ -62,18 +70,16 @@ const renderCalendar = () => {
         document.querySelector(".month").style.background = 'rgba(255, 165, 0, 0.4)';
     }
     document.querySelector(".date p").innerHTML = new Date().toDateString();
-    console.log(new Date().toDateString());
-
-    let days = "";
 
 
+    // generate days
+    monthDays.innerHTML = '';
     for (let x = firstDayIndex; x > 1; x--) {
-
-        days += `<div class="prev-date">${prevLastDay - x + 2}</div>`;
+        monthDays.insertAdjacentElement("beforeend", addDay(prevLastDay - x + 2, 'prev-date', x));
     }
     if (firstDayIndex === 0) {
         for (let z = 5; z >= 0; z--) {
-            days += `<div class="prev-date">${prevLastDay - z}</div>`;
+            monthDays.insertAdjacentElement("beforeend", addDay(prevLastDay - z, 'prev-date', z));
         }
     }
 
@@ -82,19 +88,61 @@ const renderCalendar = () => {
             i === new Date().getDate() &&
             date.getMonth() === new Date().getMonth()
         ) {
-            days += `<div class="today">${i}</div>`;
+            monthDays.insertAdjacentElement("beforeend", addDay(i, 'today', new Date().getDay()));
         } else {
-            days += `<div>${i}</div>`;
+            let newDate = new Date(date)
+            newDate.setDate(i)
+            monthDays.insertAdjacentElement("beforeend", addDay(i, 'now-month', newDate.getDay()));
         }
     }
-
-
     for (let j = 1; j <= nextDays; j++) {
-        days += `<div class="next-date">${j}</div>`;
-        monthDays.innerHTML = days;
+        monthDays.insertAdjacentElement("beforeend", addDay(j, 'next-date'));
     }
+
+    // open to do list
+    monthDays.addEventListener('click', (e) => {
+        if (!e.target.contains('day')) {
+            return;
+        }
+        console.log(e.target.textContent)
+        toDoList.classList.toggle("show")
+    })
+
+    // close to do list
+    closeIcon.addEventListener('click', (e) => {
+        toDoList.classList.remove("show")
+    })
+
+    // add task
+    let tasks = '';
+    let tasksArray = [];
+    const tasksStorage = JSON.parse(localStorage.getItem('items'));
+
+    btnAddTask.addEventListener('click', (e) => {
+        tasks += `<li>${enterTask.value}</li> <br>`;
+        listTask.innerHTML = tasks;
+        tasksArray.push(enterTask.value)
+        localStorage.setItem('items', JSON.stringify(tasksArray));
+        enterTask.value = '';
+        e.preventDefault()
+    })
+    tasksStorage.forEach(tasks => {
+        tasks += `<li>${enterTask.value}</li> <br>`;
+        listTask.innerHTML = tasks;
+    })
+
 };
 
+function addDay(data, newClass, numDay) {
+    let day = document.createElement('div');
+    day.classList.add('day');
+    day.classList.add(newClass);
+    day.innerText = data;
+    if (numDay === 0 || numDay === 6) {
+        day.classList.add('holiday');
+    }
+    return day;
+}
 
 document.querySelector(".prev").addEventListener("click", () => {
     date.setMonth(date.getMonth() - 1);
