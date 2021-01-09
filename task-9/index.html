@@ -14,8 +14,33 @@
 <body>
 <div class="container">
     <div class="calendar">
+        <div class="settings-menu">
+            <input id="menu__toggle" type="checkbox"/>
+            <label class="menu__btn" for="menu__toggle">
+                <i class="fas fa-cog config"></i>
+            </label>
+            <div class="menu__box">
+                <span class="settings">Settings...</span>
+                <form>
+                    <input type="checkbox" name="start"> <span>Start week on Sunday</span>
+
+                </form>
+            </div>
+        </div>
+        <div class="todo-list">
+            <i class="far fa-times-circle close-icon"></i>
+            <h2 class="heading-to-do">Things To Do</h2>
+            <ul class="list-task">
+
+            </ul>
+            <form>
+                <input class="enter-task" type="text" placeholder="New task"></input>
+                <br>
+                <button class="add-task-btn">Add a task</button>
+            </form>
+        </div>
+
         <div class="month">
-            <i class="fas fa-cog config"></i>
             <i class="fas fa-angle-left prev"></i>
             <div class="date">
                 <h1></h1>
@@ -42,7 +67,7 @@
         speed: 400,
         glare: true,
         "max-glare": 0.2,
-        easing:"cubic-bezier(.03,.98,.52,.99)",
+        easing: "cubic-bezier(.03,.98,.52,.99)",
     });
 </script>
 <script src="script.js"></script>
