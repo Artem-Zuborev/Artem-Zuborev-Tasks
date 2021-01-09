@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Bad+Script" rel="stylesheet">
 </head>
 
 <body>
@@ -27,19 +28,16 @@
                 </form>
             </div>
         </div>
-        <div class="todo-list">
+        <div id="todo" class="todo">
             <i class="far fa-times-circle close-icon"></i>
-            <h2 class="heading-to-do">Things To Do</h2>
-            <ul class="list-task">
-
-            </ul>
-            <form>
-                <input class="enter-task" type="text" placeholder="New task"></input>
-                <br>
-                <button class="add-task-btn">Add a task</button>
-            </form>
+            <h1 class="my-list"> TO-DO LIST   <i id="pencil" class="fas fa-pencil-alt pencil"></i> </h1>
+            <input class="enter-tasks" type="text" placeholder="Add New Todo">
+            <ul class="todos"></ul>
+            <div id="buttons" class="buttons">
+                <button class="save btn-todo">Save</button>
+                <button class="clear btn-todo">Clear</button>
+            </div>
         </div>
-
         <div class="month">
             <i class="fas fa-angle-left prev"></i>
             <div class="date">
@@ -71,6 +69,7 @@
     });
 </script>
 <script src="script.js"></script>
+<script src="todo-list.js"></script>
 </body>
 
 
