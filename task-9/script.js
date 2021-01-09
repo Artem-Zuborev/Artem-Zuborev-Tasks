@@ -1,3 +1,4 @@
+'use strict'
 const date = new Date();
 
 
@@ -51,11 +52,9 @@ const renderCalendar = () => {
     ];
 
     // to do variable
-    const toDoList = document.querySelector(".todo-list");
+    const toDoList = document.querySelector(".todo");
     const closeIcon = document.querySelector('.close-icon');
-    let listTask = document.querySelector(".list-task");  // ul
-    const enterTask = document.querySelector(".enter-task") // textarea value
-    const btnAddTask = document.querySelector(".add-task-btn")  // button form
+
 
 
     // color month
@@ -96,15 +95,16 @@ const renderCalendar = () => {
         }
     }
     for (let j = 1; j <= nextDays; j++) {
-        monthDays.insertAdjacentElement("beforeend", addDay(j, 'next-date'));
+        monthDays.insertAdjacentElement("beforeend", addDay(j, 'next-date',));
     }
 
     // open to do list
+
     monthDays.addEventListener('click', (e) => {
-        if (!e.target.contains('day')) {
+        if (!e.target.classList.contains('day')) {
             return;
         }
-        console.log(e.target.textContent)
+        //console.log(e.target.textContent)
         toDoList.classList.toggle("show")
     })
 
@@ -113,23 +113,7 @@ const renderCalendar = () => {
         toDoList.classList.remove("show")
     })
 
-    // add task
-    let tasks = '';
-    let tasksArray = [];
-    const tasksStorage = JSON.parse(localStorage.getItem('items'));
 
-    btnAddTask.addEventListener('click', (e) => {
-        tasks += `<li>${enterTask.value}</li> <br>`;
-        listTask.innerHTML = tasks;
-        tasksArray.push(enterTask.value)
-        localStorage.setItem('items', JSON.stringify(tasksArray));
-        enterTask.value = '';
-        e.preventDefault()
-    })
-    tasksStorage.forEach(tasks => {
-        tasks += `<li>${enterTask.value}</li> <br>`;
-        listTask.innerHTML = tasks;
-    })
 
 };
 
