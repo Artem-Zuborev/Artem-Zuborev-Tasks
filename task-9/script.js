@@ -1,6 +1,6 @@
 'use strict'
 const date = new Date();
-
+let dateContainer;
 
 const renderCalendar = () => {
     date.setDate(1);
@@ -56,7 +56,6 @@ const renderCalendar = () => {
     const closeIcon = document.querySelector('.close-icon');
 
 
-
     // color month
     document.querySelector(".date h1").innerHTML = months[date.getMonth()];
     if (months[date.getMonth()] === months[0] || months[date.getMonth()] === months[1] || months[date.getMonth()] === months[11]) {
@@ -74,10 +73,12 @@ const renderCalendar = () => {
     // generate days
     monthDays.innerHTML = '';
     for (let x = firstDayIndex; x > 1; x--) {
+        dateContainer = `${normalizeMonth(date.getMonth() - 1, date.getFullYear()).year}/${normalizeMonth(date.getMonth() - 1, date.getFullYear()).month}/${prevLastDay - x + 2}`
         monthDays.insertAdjacentElement("beforeend", addDay(prevLastDay - x + 2, 'prev-date', x));
     }
     if (firstDayIndex === 0) {
         for (let z = 5; z >= 0; z--) {
+            dateContainer = `${normalizeMonth(date.getMonth() - 1, date.getFullYear()).year}/${normalizeMonth(date.getMonth() - 1, date.getFullYear()).month}/${prevLastDay - z}`
             monthDays.insertAdjacentElement("beforeend", addDay(prevLastDay - z, 'prev-date', z));
         }
     }
@@ -87,25 +88,37 @@ const renderCalendar = () => {
             i === new Date().getDate() &&
             date.getMonth() === new Date().getMonth()
         ) {
+            dateContainer = `${normalizeMonth(date.getMonth(), date.getFullYear()).year}/${normalizeMonth(date.getMonth(), date.getFullYear()).month}/${i}`
             monthDays.insertAdjacentElement("beforeend", addDay(i, 'today', new Date().getDay()));
         } else {
             let newDate = new Date(date)
             newDate.setDate(i)
+            dateContainer = `${normalizeMonth(date.getMonth(), date.getFullYear()).year}/${normalizeMonth(date.getMonth(), date.getFullYear()).month}/${i}`
             monthDays.insertAdjacentElement("beforeend", addDay(i, 'now-month', newDate.getDay()));
         }
     }
     for (let j = 1; j <= nextDays; j++) {
+        dateContainer = `${normalizeMonth(date.getMonth(), date.getFullYear()).year}/${normalizeMonth(date.getMonth() + 1, date.getFullYear()).month}/${j}`
         monthDays.insertAdjacentElement("beforeend", addDay(j, 'next-date',));
     }
 
     // open to do list
 
     monthDays.addEventListener('click', (e) => {
-        if (!e.target.classList.contains('day')) {
+        let containerTasks = document.getElementById('allTasks')
+        containerTasks.innerHTML = '';
+        let elem = e.target;
+        if (!elem.classList.contains('day')) {
             return;
         }
         //console.log(e.target.textContent)
-        toDoList.classList.toggle("show")
+        let elemDate = elem.dataset.date
+        toDoList.dataset.date = elemDate
+        toDoList.classList.add("show")
+        addTasksToContainerTasks(elemDate, 'complitedToDo')
+        addTasksToContainerTasks(elemDate, 'actualToDo')
+        deleteTodo();
+
     })
 
     // close to do list
@@ -114,14 +127,62 @@ const renderCalendar = () => {
     })
 
 
-
 };
+
+/**
+ * Добавляет задачи в ToDoList при выборе даты
+ * @param date Текущая дата
+ * @param category Категория записи (актуальность) actualToDo/complitedToDo
+ */
+function addTasksToContainerTasks(date, category) {
+    let containerTasks = document.getElementById('allTasks')
+    let basketHTML = `<span><i class="fas fa-trash-alt"></i></span>`
+    if (todoDates[date] !== undefined) {
+        if (todoDates[date][category] !== undefined) {
+            todoDates[date][category].forEach(item => {
+                let li = document.createElement('li')
+                li.innerText = item
+
+                li.insertAdjacentHTML('afterbegin', basketHTML);
+                if (category === 'complitedToDo') {
+                    li.classList.add('checked')
+                }
+                containerTasks.insertAdjacentElement('afterbegin', li)
+            })
+
+        }
+    }
+}
+
+/**
+ * Позволяет возвратить текущий месяц (формат 1..12) и год в виде объекта
+ * @param month Передаваемый месяца из диапазона 0..11
+ * @param year Передаваемый год
+ * @returns {object} Месяц и год в виде обекта
+ */
+function normalizeMonth(month, year) {
+    if (month <= -1) {
+        return {
+            month: 12,
+            year: year - 1
+        };
+    } else {
+        return month >= 12 ? {
+            month: 1,
+            year: year + 1
+        } : {
+            month: month + 1,
+            year: year
+        };
+    }
+}
 
 function addDay(data, newClass, numDay) {
     let day = document.createElement('div');
     day.classList.add('day');
     day.classList.add(newClass);
     day.innerText = data;
+    day.dataset.date = dateContainer;
     if (numDay === 0 || numDay === 6) {
         day.classList.add('holiday');
     }
