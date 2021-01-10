@@ -238,6 +238,7 @@ html {
     margin-right: 30px;
     border: none;
     border-radius: 15px;
+    box-shadow: 0 0 0 60px rgba(0,0,0,0) inset, .1em .1em .2em #800;
     background-color: #167e56;
     color: #eeeeee;
     cursor: pointer;
@@ -246,9 +247,12 @@ html {
 
 .btn-todo:hover {
     height: 40px;
-
 }
-
+.btn-todo:active {
+    top: .1em;
+    left: .1em;
+    box-shadow: 0 0 0 60px rgba(0,0,0,.05) inset;
+}
 .display {
     display: none;
     transition: .3s;
