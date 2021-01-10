@@ -4,22 +4,13 @@ const spans = document.getElementsByTagName("span");
 const pencil = document.querySelector("#pencil");
 const saveBtn = document.querySelector(".save");
 const clearBtn = document.querySelector(".clear");
-const monthDays = document.querySelector(".days");
 
 
-monthDays.addEventListener('click', (e) => {
-    if (!e.target.classList.contains('day')) {
-        return;
-    }
-    //console.log(e.target.textContent)
-
-})
-
-
+let todoDates = {}
 //function to delete todo if delete span is clicked.
 function deleteTodo() {
     for (let span of spans) {
-        span.addEventListener("click", function () {
+        span.addEventListener("click", function (event) {
             span.parentElement.remove();
             event.stopPropagation();
         });
@@ -29,7 +20,8 @@ function deleteTodo() {
 //function to load todo if list is found in local storage.
 function loadTodo() {
     if (localStorage.getItem('todoList')) {
-        ul.innerHTML = localStorage.getItem('todoList');
+        todoDates = Object.assign(todoDates, JSON.parse(localStorage.getItem('todoList')))
+        //ul.innerHTML = localStorage.getItem('todoList');
         deleteTodo();
     }
 }
@@ -72,15 +64,38 @@ pencil.addEventListener('click', function () {
 
 
 //save todolist state so user can access it later
-saveBtn.addEventListener('click', function () {
-    localStorage.setItem('todoList', ul.innerHTML);
+saveBtn.addEventListener('click', function (e) {
+    let containerTasks = document.getElementById('allTasks')
+    let tasks = containerTasks.querySelectorAll('li')
+    let todo = document.getElementById('todo')
+    let todoDate = todo.dataset.date
+    if (todoDates[todoDate] === undefined) {
+        todoDates[todoDate] = {}
+    }
+    todoDates[todoDate].actualToDo = [];
+    todoDates[todoDate].complitedToDo = [];
+
+    tasks.forEach(item => {
+        if (item.classList.contains('checked')) {
+            //Для неактульных
+            todoDates[todoDate].complitedToDo.unshift(item.innerText)
+        } else {
+            //Для актуальных записей
+            todoDates[todoDate].actualToDo.unshift(item.innerText)
+        }
+    })
+
+
+    localStorage.setItem('todoList', JSON.stringify(todoDates));
+let toDoDot = document.querySelector('.day')
+    toDoDot.style.color='green'
 
 });
 
 //clear all todo when clear button is clicked
 clearBtn.addEventListener('click', function () {
     ul.innerHTML = "";
-    localStorage.removeItem('todoList', ul.innerHTML);
+    localStorage.removeItem('todoList', JSON.stringify(todoDates));
 });
 
 
