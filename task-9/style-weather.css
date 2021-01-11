@@ -114,6 +114,7 @@
     height: 30px;
     width: 90px;
     cursor: pointer;
+    transition: .3s;
 }
 .btn-quote:hover{
     border-radius: 0px;
