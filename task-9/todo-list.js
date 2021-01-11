@@ -7,6 +7,7 @@ const clearBtn = document.querySelector(".clear");
 
 
 let todoDates = {}
+
 //function to delete todo if delete span is clicked.
 function deleteTodo() {
     for (let span of spans) {
@@ -87,8 +88,8 @@ saveBtn.addEventListener('click', function (e) {
 
 
     localStorage.setItem('todoList', JSON.stringify(todoDates));
-let toDoDot = document.querySelector('.day')
-    toDoDot.style.color='green'
+    let toDoDot = document.querySelector('.day')
+    toDoDot.style.color = 'green'
 
 });
 
