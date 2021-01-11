@@ -41,7 +41,7 @@ function showTime() {
 
 
     // Output Time
-    time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(
+    time.innerHTML = `${addZero(hour)}<span>:</span>${addZero(min)}<span>:</span>${addZero(
         sec
     )} ${showAmPm ? amPm : ''}`;
     dateNow.innerHTML = `${days[day_]}, ${date_} ${months[month_]}`;
