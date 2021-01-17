@@ -1,31 +1,29 @@
 'use strict'
 const date = new Date();
 let dateContainer;
+// to do variable
+const toDoList = document.querySelector(".todo");
+const closeIcon = document.querySelector('.close-icon');
+const monthDays = document.querySelector(".days");
+
 
 const renderCalendar = () => {
     date.setDate(1);
-
     console.log(date.getDay())
-    const monthDays = document.querySelector(".days");
-
-
     const lastDay = new Date(
         date.getFullYear(),
         date.getMonth() + 1,
         0
     ).getDate();
     console.log(lastDay)
-
     const prevLastDay = new Date(
         date.getFullYear(),
         date.getMonth(),
         0
     ).getDate();
     console.log(prevLastDay)
-
     const firstDayIndex = date.getDay();
     console.log(firstDayIndex)
-
     const lastDayIndex = new Date(
         date.getFullYear(),
         date.getMonth() + 1,
@@ -50,10 +48,6 @@ const renderCalendar = () => {
         "November",
         "December",
     ];
-
-    // to do variable
-    const toDoList = document.querySelector(".todo");
-    const closeIcon = document.querySelector('.close-icon');
 
 
     // color month
@@ -104,30 +98,30 @@ const renderCalendar = () => {
 
     // open to do list
 
-    monthDays.addEventListener('click', (e) => {
-        let containerTasks = document.getElementById('allTasks')
-        containerTasks.innerHTML = '';
-        let elem = e.target;
-        if (!elem.classList.contains('day')) {
-            return;
-        }
-        //console.log(e.target.textContent)
-        let elemDate = elem.dataset.date
-        toDoList.dataset.date = elemDate
-        toDoList.classList.add("show")
-        addTasksToContainerTasks(elemDate, 'complitedToDo')
-        addTasksToContainerTasks(elemDate, 'actualToDo')
-        deleteTodo();
-
-    })
-
-    // close to do list
-    closeIcon.addEventListener('click', (e) => {
-        toDoList.classList.remove("show")
-    })
-
 
 };
+
+monthDays.addEventListener('click', (e) => {
+    let containerTasks = document.getElementById('allTasks')
+    containerTasks.innerHTML = '';
+    let elem = e.target;
+    if (!elem.classList.contains('day')) {
+        return;
+    }
+    //console.log(e.target.textContent)
+    let elemDate = elem.dataset.date
+    toDoList.dataset.date = elemDate
+    toDoList.classList.add("show")
+    addTasksToContainerTasks(elemDate, 'complitedToDo')
+    addTasksToContainerTasks(elemDate, 'actualToDo')
+    deleteTodo();
+
+})
+
+// close to do list
+closeIcon.addEventListener('click', (e) => {
+    toDoList.classList.remove("show")
+})
 
 /**
  * Добавляет задачи в ToDoList при выборе даты
@@ -142,7 +136,6 @@ function addTasksToContainerTasks(date, category) {
             todoDates[date][category].forEach(item => {
                 let li = document.createElement('li')
                 li.innerText = item
-
                 li.insertAdjacentHTML('afterbegin', basketHTML);
                 if (category === 'complitedToDo') {
                     li.classList.add('checked')
@@ -182,11 +175,26 @@ function addDay(data, newClass, numDay) {
     day.classList.add('day');
     day.classList.add(newClass);
     day.innerText = data;
+    // if(isTask(dateContainer)){
+    //     day.classList.add('toDoStyle')
+    // }
     day.dataset.date = dateContainer;
     if (numDay === 0 || numDay === 6) {
         day.classList.add('holiday');
     }
     return day;
+}
+
+// TODO: Доработать
+function isTask(date) {
+    let task = false;
+    //......
+    if (true/*Есть запись*/) {
+        task = true
+    }
+    //.....
+
+    return task
 }
 
 document.querySelector(".prev").addEventListener("click", () => {

@@ -8,7 +8,7 @@ const clearBtn = document.querySelector(".clear");
 
 let todoDates = {}
 
-//function to delete todo if delete span is clicked.
+//function to delete toDoList if delete span is clicked.
 function deleteTodo() {
     for (let span of spans) {
         span.addEventListener("click", function (event) {
