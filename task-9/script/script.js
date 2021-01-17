@@ -1,70 +1,29 @@
 'use strict'
 const date = new Date();
 let dateContainer;
-// to do variable
 const toDoList = document.querySelector(".todo");
 const closeIcon = document.querySelector('.close-icon');
 const monthDays = document.querySelector(".days");
 
 
 const renderCalendar = () => {
+    renderDay();
+    renderMonth();
+};
+
+function renderDay() {
+    // generate days
     date.setDate(1);
-    console.log(date.getDay())
-    const lastDay = new Date(
-        date.getFullYear(),
-        date.getMonth() + 1,
-        0
-    ).getDate();
+    const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
     console.log(lastDay)
-    const prevLastDay = new Date(
-        date.getFullYear(),
-        date.getMonth(),
-        0
-    ).getDate();
+    const prevLastDay = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
     console.log(prevLastDay)
     const firstDayIndex = date.getDay();
     console.log(firstDayIndex)
-    const lastDayIndex = new Date(
-        date.getFullYear(),
-        date.getMonth() + 1,
-        0
-    ).getDay();
+    const lastDayIndex = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
     console.log(lastDayIndex)
 
     const nextDays = 7 - lastDayIndex;
-
-
-    const months = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-    ];
-
-
-    // color month
-    document.querySelector(".date h1").innerHTML = months[date.getMonth()];
-    if (months[date.getMonth()] === months[0] || months[date.getMonth()] === months[1] || months[date.getMonth()] === months[11]) {
-        document.querySelector(".month").style.background = 'rgba(0,153,255,0.4)';
-    } else if (months[date.getMonth()] === months[2] || months[date.getMonth()] === months[3] || months[date.getMonth()] === months[4]) {
-        document.querySelector(".month").style.background = 'rgba(102,204,153,0.4)';
-    } else if (months[date.getMonth()] === months[5] || months[date.getMonth()] === months[6] || months[date.getMonth()] === months[7]) {
-        document.querySelector(".month").style.background = 'rgba(102,0,0,0.4)';
-    } else {
-        document.querySelector(".month").style.background = 'rgba(255, 165, 0, 0.4)';
-    }
-    document.querySelector(".date p").innerHTML = new Date().toDateString();
-
-
-    // generate days
     monthDays.innerHTML = '';
     for (let x = firstDayIndex; x > 1; x--) {
         dateContainer = `${normalizeMonth(date.getMonth() - 1, date.getFullYear()).year}/${normalizeMonth(date.getMonth() - 1, date.getFullYear()).month}/${prevLastDay - x + 2}`
@@ -95,12 +54,36 @@ const renderCalendar = () => {
         dateContainer = `${normalizeMonth(date.getMonth(), date.getFullYear()).year}/${normalizeMonth(date.getMonth() + 1, date.getFullYear()).month}/${j}`
         monthDays.insertAdjacentElement("beforeend", addDay(j, 'next-date',));
     }
+}
+function renderMonth() {
+    const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ];
+    document.querySelector(".date h1").innerHTML = months[date.getMonth()];
+    if (months[date.getMonth()] === months[0] || months[date.getMonth()] === months[1] || months[date.getMonth()] === months[11]) {
+        document.querySelector(".month").style.background = 'rgba(0,153,255,0.4)';
+    } else if (months[date.getMonth()] === months[2] || months[date.getMonth()] === months[3] || months[date.getMonth()] === months[4]) {
+        document.querySelector(".month").style.background = 'rgba(102,204,153,0.4)';
+    } else if (months[date.getMonth()] === months[5] || months[date.getMonth()] === months[6] || months[date.getMonth()] === months[7]) {
+        document.querySelector(".month").style.background = 'rgba(102,0,0,0.4)';
+    } else {
+        document.querySelector(".month").style.background = 'rgba(255, 165, 0, 0.4)';
+    }
+    document.querySelector(".date p").innerHTML = new Date().toDateString();
+}
 
-    // open to do list
-
-
-};
-
+// open to do list
 monthDays.addEventListener('click', (e) => {
     let containerTasks = document.getElementById('allTasks')
     containerTasks.innerHTML = '';
@@ -115,7 +98,6 @@ monthDays.addEventListener('click', (e) => {
     addTasksToContainerTasks(elemDate, 'complitedToDo')
     addTasksToContainerTasks(elemDate, 'actualToDo')
     deleteTodo();
-
 })
 
 // close to do list
@@ -169,7 +151,6 @@ function normalizeMonth(month, year) {
         };
     }
 }
-
 function addDay(data, newClass, numDay) {
     let day = document.createElement('div');
     day.classList.add('day');
@@ -201,8 +182,6 @@ document.querySelector(".prev").addEventListener("click", () => {
     date.setMonth(date.getMonth() - 1);
     renderCalendar();
 });
-
-
 document.querySelector(".next").addEventListener("click", () => {
     date.setMonth(date.getMonth() + 1);
     renderCalendar();
