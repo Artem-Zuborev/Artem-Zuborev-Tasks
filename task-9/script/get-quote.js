@@ -9,5 +9,8 @@ async function getQuote() {
     blockquote.textContent = data.quoteText;
     figcaption.textContent = data.quoteAuthor;
 }
+getQuote().catch(e => {
+    console.log(`Error! ${e}`)
+})
 document.addEventListener('DOMContentLoaded', getQuote);
 btn.addEventListener('click', getQuote);
