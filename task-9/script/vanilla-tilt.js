@@ -507,3 +507,10 @@ if (typeof document !== "undefined") {
 return VanillaTilt;
 
 }());
+VanillaTilt.init(document.querySelector(".calendar"), {
+  max: 15,
+  speed: 400,
+  glare: true,
+  "max-glare": 0.2,
+  easing: "cubic-bezier(.03,.98,.52,.99)",
+});
