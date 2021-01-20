@@ -14,7 +14,7 @@ const closeIcon = document.querySelector('.close-icon');
 const monthDays = document.querySelector(".days");
 
 
-const renderCalendar = () => {
+export const renderCalendar = () => {
     renderDay();
     renderMonth();
 };
@@ -112,6 +112,7 @@ monthDays.addEventListener('click', (e) => {
 // close to do list
 closeIcon.addEventListener('click', (e) => {
     toDoList.classList.remove("show")
+    renderCalendar()
 })
 
 /**
@@ -167,24 +168,22 @@ function addDay(data, newClass, numDay) {
     day.innerText = data;
     if(isTask(dateContainer)){
         day.classList.add('toDoStyle')
+    }else {
+        day.classList.remove('toDoStyle')
     }
     day.dataset.date = dateContainer;
-    console.log(day.dataset.date)
     if (numDay === 0 || numDay === 6) {
         day.classList.add('holiday');
     }
     return day;
 }
 
-// TODO: Доработать
+
 function isTask(date) {
     let task = false;
-
     if (todoDates[date] !== undefined) {
         task = true
     }
-
-
     return task
 }
 
