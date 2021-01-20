@@ -1,5 +1,6 @@
 @import "style-weather.css";
 
+
 * {
     margin: 0;
     padding: 0;
@@ -266,7 +267,9 @@ html {
     opacity: 0.5;
     text-decoration: line-through;
 }
-
+.toDoStyle{
+    color: #0000ff;
+}
 .month p,
 span,
 div {
@@ -337,3 +340,6 @@ div {
 .prev {
     transition: .4s;
 }
+
+
+

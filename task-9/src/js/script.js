@@ -1,3 +1,11 @@
+
+import '../js/vanilla-tilt';
+import '../css/style.css';
+import '../js/weather';
+import '../js/get-quote';
+import '../js/show-time';
+import {deleteTodo, todoDates} from "./todo-list";
+
 'use strict'
 const date = new Date();
 let dateContainer;
@@ -22,8 +30,9 @@ function renderDay() {
     console.log(firstDayIndex)
     const lastDayIndex = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
     console.log(lastDayIndex)
-
     const nextDays = 7 - lastDayIndex;
+
+
     monthDays.innerHTML = '';
     for (let x = firstDayIndex; x > 1; x--) {
         dateContainer = `${normalizeMonth(date.getMonth() - 1, date.getFullYear()).year}/${normalizeMonth(date.getMonth() - 1, date.getFullYear()).month}/${prevLastDay - x + 2}`
@@ -156,10 +165,11 @@ function addDay(data, newClass, numDay) {
     day.classList.add('day');
     day.classList.add(newClass);
     day.innerText = data;
-    // if(isTask(dateContainer)){
-    //     day.classList.add('toDoStyle')
-    // }
+    if(isTask(dateContainer)){
+        day.classList.add('toDoStyle')
+    }
     day.dataset.date = dateContainer;
+    console.log(day.dataset.date)
     if (numDay === 0 || numDay === 6) {
         day.classList.add('holiday');
     }
@@ -169,11 +179,11 @@ function addDay(data, newClass, numDay) {
 // TODO: Доработать
 function isTask(date) {
     let task = false;
-    //......
-    if (true/*Есть запись*/) {
+
+    if (date) {
         task = true
     }
-    //.....
+
 
     return task
 }

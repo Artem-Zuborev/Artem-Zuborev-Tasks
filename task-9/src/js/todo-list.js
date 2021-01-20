@@ -6,10 +6,10 @@ const saveBtn = document.querySelector(".save");
 const clearBtn = document.querySelector(".clear");
 
 
-let todoDates = {}
+export let todoDates = {}
 
 //function to delete toDoList if delete span is clicked.
-function deleteTodo() {
+export function deleteTodo() {
     for (let span of spans) {
         span.addEventListener("click", function (event) {
             span.parentElement.remove();
@@ -85,18 +85,13 @@ saveBtn.addEventListener('click', function (e) {
             todoDates[todoDate].actualToDo.unshift(item.innerText)
         }
     })
-
-
     localStorage.setItem('todoList', JSON.stringify(todoDates));
-    let toDoDot = document.querySelector('.day')
-    toDoDot.style.color = 'green'
-
 });
 
-//clear all todo when clear button is clicked
+//clear all to do when clear button is clicked
 clearBtn.addEventListener('click', function () {
     ul.innerHTML = "";
-    localStorage.removeItem('todoList', JSON.stringify(todoDates));
+    localStorage.removeItem('todoList');
 });
 
 
