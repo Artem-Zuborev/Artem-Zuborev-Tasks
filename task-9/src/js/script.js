@@ -180,7 +180,7 @@ function addDay(data, newClass, numDay) {
 function isTask(date) {
     let task = false;
 
-    if (date) {
+    if (todoDates[date] !== undefined) {
         task = true
     }
 
