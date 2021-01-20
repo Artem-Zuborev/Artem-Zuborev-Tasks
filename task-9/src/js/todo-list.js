@@ -1,3 +1,5 @@
+import {renderCalendar} from "./script";
+
 const input = document.querySelector("input[type = 'text']");
 const ul = document.querySelector("ul");
 const spans = document.getElementsByTagName("span");
@@ -18,7 +20,7 @@ export function deleteTodo() {
     }
 }
 
-//function to load todo if list is found in local storage.
+//function to load to do if list is found in local storage.
 function loadTodo() {
     if (localStorage.getItem('todoList')) {
         todoDates = Object.assign(todoDates, JSON.parse(localStorage.getItem('todoList')))
@@ -86,6 +88,7 @@ saveBtn.addEventListener('click', function (e) {
         }
     })
     localStorage.setItem('todoList', JSON.stringify(todoDates));
+    renderCalendar()
 });
 
 //clear all to do when clear button is clicked
@@ -95,8 +98,8 @@ clearBtn.addEventListener('click', function () {
 });
 
 
-//delete todo
+//delete to do
 deleteTodo();
 
-//load todo
+//load to do
 loadTodo();
