@@ -4,8 +4,8 @@ const input = document.querySelector("input[type = 'text']");
 const ul = document.querySelector("ul");
 const spans = document.getElementsByTagName("span");
 const pencil = document.querySelector("#pencil");
-const saveBtn = document.querySelector(".save");
-const clearBtn = document.querySelector(".clear");
+const saveBtn = document.querySelector(".todo__save");
+const clearBtn = document.querySelector(".todo__clear");
 
 
 export let todoDates = {}
