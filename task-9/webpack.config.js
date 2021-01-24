@@ -7,7 +7,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const LinkTypePlugin = require('html-webpack-link-type-plugin').HtmlWebpackLinkTypePlugin;
 const ExportsLoad = require('exports-loader');
 const Vanilla = require('vanilla-tilt');
-
+const OptimizeCssAssetWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
 const isProd = !isDev;
 const filename = (ext) => isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`;
 
@@ -46,9 +47,6 @@ module.exports = {
                 {from: path.resolve(__dirname, 'src/assets'), to: path.resolve(__dirname, 'app')}
             ]
         }),
-        new LinkTypePlugin({
-            '*.css': 'text/css'
-        }),
 
     ],
     module: {
@@ -65,6 +63,10 @@ module.exports = {
                         }
                     },
                     'css-loader','resolve-url-loader'],
+            },
+            {
+                test: /\.s[ac]ss$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ]
             },
             // {
             //     test: /\.exec.js$/,
