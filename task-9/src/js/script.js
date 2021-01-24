@@ -1,6 +1,6 @@
 
 import '../js/vanilla-tilt';
-import '../css/style.css';
+import '../css/style.scss';
 import '../js/weather';
 import '../js/get-quote';
 import '../js/show-time';
@@ -23,25 +23,21 @@ function renderDay() {
     // generate days
     date.setDate(1);
     const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-    console.log(lastDay)
     const prevLastDay = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
-    console.log(prevLastDay)
     const firstDayIndex = date.getDay();
-    console.log(firstDayIndex)
     const lastDayIndex = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
-    console.log(lastDayIndex)
     const nextDays = 7 - lastDayIndex;
 
 
     monthDays.innerHTML = '';
     for (let x = firstDayIndex; x > 1; x--) {
         dateContainer = `${normalizeMonth(date.getMonth() - 1, date.getFullYear()).year}/${normalizeMonth(date.getMonth() - 1, date.getFullYear()).month}/${prevLastDay - x + 2}`
-        monthDays.insertAdjacentElement("beforeend", addDay(prevLastDay - x + 2, 'prev-date', x));
+        monthDays.insertAdjacentElement("beforeend", addDay(prevLastDay - x + 2, 'days__prev-date', x));
     }
     if (firstDayIndex === 0) {
         for (let z = 5; z >= 0; z--) {
             dateContainer = `${normalizeMonth(date.getMonth() - 1, date.getFullYear()).year}/${normalizeMonth(date.getMonth() - 1, date.getFullYear()).month}/${prevLastDay - z}`
-            monthDays.insertAdjacentElement("beforeend", addDay(prevLastDay - z, 'prev-date', z));
+            monthDays.insertAdjacentElement("beforeend", addDay(prevLastDay - z, 'days__prev-date', z));
         }
     }
 
@@ -51,17 +47,17 @@ function renderDay() {
             date.getMonth() === new Date().getMonth()
         ) {
             dateContainer = `${normalizeMonth(date.getMonth(), date.getFullYear()).year}/${normalizeMonth(date.getMonth(), date.getFullYear()).month}/${i}`
-            monthDays.insertAdjacentElement("beforeend", addDay(i, 'today', new Date().getDay()));
+            monthDays.insertAdjacentElement("beforeend", addDay(i, 'days__today', new Date().getDay()));
         } else {
             let newDate = new Date(date)
             newDate.setDate(i)
             dateContainer = `${normalizeMonth(date.getMonth(), date.getFullYear()).year}/${normalizeMonth(date.getMonth(), date.getFullYear()).month}/${i}`
-            monthDays.insertAdjacentElement("beforeend", addDay(i, 'now-month', newDate.getDay()));
+            monthDays.insertAdjacentElement("beforeend", addDay(i, 'days__now-month', newDate.getDay()));
         }
     }
     for (let j = 1; j <= nextDays; j++) {
         dateContainer = `${normalizeMonth(date.getMonth(), date.getFullYear()).year}/${normalizeMonth(date.getMonth() + 1, date.getFullYear()).month}/${j}`
-        monthDays.insertAdjacentElement("beforeend", addDay(j, 'next-date',));
+        monthDays.insertAdjacentElement("beforeend", addDay(j, 'days__next-date',));
     }
 }
 function renderMonth() {
@@ -97,7 +93,7 @@ monthDays.addEventListener('click', (e) => {
     let containerTasks = document.getElementById('allTasks')
     containerTasks.innerHTML = '';
     let elem = e.target;
-    if (!elem.classList.contains('day')) {
+    if (!elem.classList.contains('days__day')) {
         return;
     }
     //console.log(e.target.textContent)
@@ -163,17 +159,17 @@ function normalizeMonth(month, year) {
 }
 function addDay(data, newClass, numDay) {
     let day = document.createElement('div');
-    day.classList.add('day');
+    day.classList.add('days__day');
     day.classList.add(newClass);
     day.innerText = data;
     if(isTask(dateContainer)){
-        day.classList.add('toDoStyle')
+        day.classList.add('days__style')
     }else {
-        day.classList.remove('toDoStyle')
+        day.classList.remove('days__style')
     }
     day.dataset.date = dateContainer;
     if (numDay === 0 || numDay === 6) {
-        day.classList.add('holiday');
+        day.classList.add('days__holiday');
     }
     return day;
 }
