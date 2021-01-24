@@ -18,16 +18,15 @@
             <i class="far fa-times-circle close-icon-weather"></i>
             <div class="weather" id="weather">
                 <time class="time" id="time"></time>
-                <div class="date-weather" id="date"></div>
-                <div class="city-name" id="city-name" contenteditable="true">Могилёв</div>
-                <div class="temp-weather">
-                    <div class="temperature" id="temperature"></div>
-                    <i class="weather-icon owf"></i>
+                <div class="weather__date" id="date"></div>
+                <div class="weather__city-name" id="city-name" contenteditable="true">Могилёв</div>
+                <div class="weather__temp">
+                    <div class="weather__temperature" id="temperature"></div>
                 </div>
-                <div class="info-weather">
-                    <div class="weather-description"></div>
-                    <div class="wind-speed"></div>
-                    <div class="humidity"></div>
+                <div class="weather__info">
+                    <div class="weather__description"></div>
+                    <div class="weather__wind-speed"></div>
+                    <div class="weather__humidity"></div>
                 </div>
             </div>
             <figure class="quote">
@@ -36,7 +35,7 @@
                 </blockquote>
                 <figcaption>
                 </figcaption>
-                <button class="btn-quote">Next quote</button>
+                <button class="quote__btn">Next quote</button>
             </figure>
         </div>
         <div class="settings-menu">
@@ -44,8 +43,8 @@
             <label class="menu__btn" for="menu__toggle">
                 <i class="fas fa-cog config"></i>
             </label>
-            <div class="menu__box">
-                <span class="settings">Settings...</span>
+            <div class="menu-box">
+                <span class="menu-box__settings">Settings...</span>
                 <form>
                     <input type="checkbox" name="start"> <span>Start week on Sunday</span>
 
@@ -54,12 +53,12 @@
         </div>
         <div id="todo" class="todo">
             <i class="far fa-times-circle close-icon"></i>
-            <h1 class="my-list"> TO-DO LIST <i id="pencil" class="fas fa-pencil-alt pencil"></i></h1>
-            <input class="enter-tasks" type="text" placeholder="Add New Todo">
-            <ul id="allTasks" class="todos"></ul>
-            <div id="buttons" class="buttons">
-                <button class="save btn-todo">Save</button>
-                <button class="clear btn-todo">Clear</button>
+            <h1 class="todo__my-list"> TO-DO LIST <i id="pencil" class="fas fa-pencil-alt pencil"></i></h1>
+            <input class="todo__enter-tasks" type="text" placeholder="Add New Todo">
+            <ul id="allTasks" class="todo__todos"></ul>
+            <div id="buttons" class="todo__buttons">
+                <button class="todo__save todo__btn">Save</button>
+                <button class="todo__clear todo__btn">Clear</button>
             </div>
         </div>
         <div class="month">
