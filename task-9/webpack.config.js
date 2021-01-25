@@ -16,11 +16,14 @@ module.exports = {
     devtool: 'eval',
     context: path.resolve(__dirname, 'src'),
     mode: 'development',
-    entry: './js/script.js',
+    entry: './js/script.ts',
     output: {
         filename: `./js/${filename('js')}`,
         path: path.resolve(__dirname, 'app'),
         publicPath: "",
+    },
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js'],
     },
     devServer: {
         historyApiFallback: true,
@@ -68,10 +71,16 @@ module.exports = {
                 test: /\.s[ac]ss$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ]
             },
-            // {
-            //     test: /\.exec.js$/,
-            //     use: [ 'script-loader' ]
-            // },
+            {
+                test: /\.exec.js$/,
+                use: [ 'script-loader' ]
+            },
+            {
+                test: /\.tsx?$/,
+                use: ['ts-loader'],
+                exclude: /node_modules/
+            },
+
             // {
             //     test: /\.js$/,
             //     exclude: /node_modules/,
@@ -113,5 +122,5 @@ module.exports = {
             }
 
         ]
-    }
+    },
 };
