@@ -1,9 +1,9 @@
 
-import '../js/vanilla-tilt';
+import './vanilla-tilt';
 import '../css/style.scss';
-import '../js/weather';
-import '../js/get-quote';
-import '../js/show-time';
+import './weather';
+import './get-quote';
+import './show-time';
 import {deleteTodo, todoDates} from "./todo-list";
 
 'use strict'

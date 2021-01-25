@@ -29,7 +29,7 @@ function loadTodo() {
     }
 }
 
-//event listener for input to add new todo to the list.
+//event listener for input to add new to do to the list.
 input.addEventListener("keypress", function (keyPressed) {
     if (keyPressed.which === 13) {
 //creating lists and span when enter is clicked
@@ -52,7 +52,7 @@ input.addEventListener("keypress", function (keyPressed) {
 
 });
 
-// event listener to linethrough list if clicked
+
 ul.addEventListener('click', function (e) {
         if (e.target.tagName === 'LI') {
             e.target.classList.toggle('checked');
