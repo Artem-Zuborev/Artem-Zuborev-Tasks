@@ -1,4 +1,3 @@
-
 import './vanilla-tilt';
 import '../css/style.scss';
 import './weather';
@@ -9,9 +8,9 @@ import {deleteTodo, todoDates} from "./todo-list";
 'use strict'
 const date = new Date();
 let dateContainer;
-const toDoList = document.querySelector(".todo");
+const toDoList:HTMLElement = <HTMLElement> document.querySelector(".todo");
 const closeIcon = document.querySelector('.close-icon');
-const monthDays = document.querySelector(".days");
+const monthDays:HTMLElement = <HTMLElement> document.querySelector(".days");
 
 
 export const renderCalendar = () => {
@@ -57,9 +56,10 @@ function renderDay() {
     }
     for (let j = 1; j <= nextDays; j++) {
         dateContainer = `${normalizeMonth(date.getMonth(), date.getFullYear()).year}/${normalizeMonth(date.getMonth() + 1, date.getFullYear()).month}/${j}`
-        monthDays.insertAdjacentElement("beforeend", addDay(j, 'days__next-date',));
+        monthDays.insertAdjacentElement("beforeend", addDay(j, 'days__next-date'));
     }
 }
+
 function renderMonth() {
     const months = [
         "January",
@@ -75,33 +75,34 @@ function renderMonth() {
         "November",
         "December",
     ];
+    const colorMonth: HTMLElement = <HTMLElement>document.querySelector(".month")
     document.querySelector(".date h1").innerHTML = months[date.getMonth()];
     if (months[date.getMonth()] === months[0] || months[date.getMonth()] === months[1] || months[date.getMonth()] === months[11]) {
-        document.querySelector(".month").style.background = 'rgba(0,153,255,0.4)';
+        colorMonth.style.background = 'rgba(0,153,255,0.4)';
     } else if (months[date.getMonth()] === months[2] || months[date.getMonth()] === months[3] || months[date.getMonth()] === months[4]) {
-        document.querySelector(".month").style.background = 'rgba(102,204,153,0.4)';
+        colorMonth.style.background = 'rgba(102,204,153,0.4)';
     } else if (months[date.getMonth()] === months[5] || months[date.getMonth()] === months[6] || months[date.getMonth()] === months[7]) {
-        document.querySelector(".month").style.background = 'rgba(102,0,0,0.4)';
+        colorMonth.style.background = 'rgba(102,0,0,0.4)';
     } else {
-        document.querySelector(".month").style.background = 'rgba(255, 165, 0, 0.4)';
+        colorMonth.style.background = 'rgba(255, 165, 0, 0.4)';
     }
     document.querySelector(".date p").innerHTML = new Date().toDateString();
 }
 
 // open to do list
 monthDays.addEventListener('click', (e) => {
-    let containerTasks = document.getElementById('allTasks')
+    let containerTasks = document.getElementById('allTasks');
     containerTasks.innerHTML = '';
-    let elem = e.target;
+    let elem: HTMLElement = <HTMLElement>e.target;
     if (!elem.classList.contains('days__day')) {
         return;
     }
     //console.log(e.target.textContent)
-    let elemDate = elem.dataset.date
-    toDoList.dataset.date = elemDate
-    toDoList.classList.add("show")
-    addTasksToContainerTasks(elemDate, 'complitedToDo')
-    addTasksToContainerTasks(elemDate, 'actualToDo')
+    let elemDate:string = elem.dataset.date;
+    toDoList.dataset.date = elemDate;
+    toDoList.classList.add("show");
+    addTasksToContainerTasks(elemDate, 'complitedToDo');
+    addTasksToContainerTasks(elemDate, 'actualToDo');
     deleteTodo();
 })
 
@@ -157,14 +158,15 @@ function normalizeMonth(month, year) {
         };
     }
 }
-function addDay(data, newClass, numDay) {
+
+function addDay(data, newClass, numDay?) {
     let day = document.createElement('div');
     day.classList.add('days__day');
     day.classList.add(newClass);
     day.innerText = data;
-    if(isTask(dateContainer)){
+    if (isTask(dateContainer)) {
         day.classList.add('days__style')
-    }else {
+    } else {
         day.classList.remove('days__style')
     }
     day.dataset.date = dateContainer;
