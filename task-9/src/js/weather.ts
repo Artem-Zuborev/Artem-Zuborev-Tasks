@@ -48,7 +48,10 @@ function setCity(e) {
         if (e.which === 13 || e.keyCode === 13) {
             getWeather();
             localStorage.setItem('city-name', e.target.innerText);
-            city.blur(focus);
+            if (city instanceof HTMLElement) {
+                city.blur();
+            }
+
         }
     } else {
         localStorage.setItem('city-name', e.target.innerText);
