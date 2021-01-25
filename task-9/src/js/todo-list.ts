@@ -2,13 +2,21 @@ import {renderCalendar} from "./script";
 
 const input = document.querySelector("input[type = 'text']");
 const ul = document.querySelector("ul");
-const spans = document.getElementsByTagName("span");
+const spans: any = document.getElementsByTagName("span");
 const pencil = document.querySelector("#pencil");
 const saveBtn = document.querySelector(".todo__save");
 const clearBtn = document.querySelector(".todo__clear");
 
+interface test {
+    [options: string]: tasks
+}
 
-export let todoDates = {}
+interface tasks {
+    actualToDo?: string[],
+    completedToDo?: string[]
+}
+
+export let todoDates: test = {}
 
 //function to delete toDoList if delete span is clicked.
 export function deleteTodo() {
@@ -24,13 +32,12 @@ export function deleteTodo() {
 function loadTodo() {
     if (localStorage.getItem('todoList')) {
         todoDates = Object.assign(todoDates, JSON.parse(localStorage.getItem('todoList')))
-        //ul.innerHTML = localStorage.getItem('todoList');
         deleteTodo();
     }
 }
 
 //event listener for input to add new to do to the list.
-input.addEventListener("keypress", function (keyPressed) {
+input.addEventListener("keypress", function (keyPressed: KeyboardEvent) {
     if (keyPressed.which === 13) {
 //creating lists and span when enter is clicked
         let li = document.createElement("li");
@@ -53,9 +60,10 @@ input.addEventListener("keypress", function (keyPressed) {
 });
 
 
-ul.addEventListener('click', function (e) {
-        if (e.target.tagName === 'LI') {
-            e.target.classList.toggle('checked');
+ul.addEventListener('click', function (e: MouseEvent) {
+        let elem: HTMLElement = <HTMLElement>e.target
+        if (elem.tagName === 'LI') {
+            elem.classList.toggle('checked');
         }
     }, false
 );
@@ -76,12 +84,12 @@ saveBtn.addEventListener('click', function (e) {
         todoDates[todoDate] = {}
     }
     todoDates[todoDate].actualToDo = [];
-    todoDates[todoDate].complitedToDo = [];
+    todoDates[todoDate].completedToDo = [];
 
     tasks.forEach(item => {
         if (item.classList.contains('checked')) {
             //Для неактульных
-            todoDates[todoDate].complitedToDo.unshift(item.innerText)
+            todoDates[todoDate].completedToDo.unshift(item.innerText)
         } else {
             //Для актуальных записей
             todoDates[todoDate].actualToDo.unshift(item.innerText)
