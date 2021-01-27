@@ -1,5 +1,5 @@
 
-var VanillaTilt = (function () {
+let VanillaTilt = (function () {
 'use strict';
 
 /**
