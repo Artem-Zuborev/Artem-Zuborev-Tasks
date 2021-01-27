@@ -1,7 +1,7 @@
 // Show Time
-const time = document.getElementById('time');
-const dateNow = document.getElementById('date');
-const months = [
+const time:HTMLElement = document.getElementById('time');
+const dateNow:HTMLElement = document.getElementById('date');
+const months:string[] = [
     "Январь",
     "Февраль",
     "Март",
@@ -15,7 +15,7 @@ const months = [
     "Ноябрь",
     "Декабрь"
 ];
-const days = [
+const days:string[] = [
     'Воскресенье',
     'Понедельник',
     'Вторник',
@@ -25,19 +25,19 @@ const days = [
     'Суббота'
 
 ]
-const showAmPm = true;
+const showAmPm:boolean = true;
 
-function showTime() {
-    let today = new Date(),
-        month_ = today.getMonth(),
-        date_ = today.getUTCDate(),
-        day_ = today.getUTCDay(),
-        hour = today.getHours(),
-        min = today.getMinutes(),
-        sec = today.getSeconds();
+function showTime():void {
+    let today: Date = new Date(),
+        month_: number = today.getMonth(),
+        date_: number = today.getUTCDate(),
+        day_: number = today.getUTCDay(),
+        hour: number = today.getHours(),
+        min: number = today.getMinutes(),
+        sec: number = today.getSeconds();
 
     // Set AM or PM
-    const amPm = hour >= 12 ? 'PM' : 'AM';
+    const amPm:string = hour >= 12 ? 'PM' : 'AM';
 
 
     // Output Time
@@ -45,13 +45,12 @@ function showTime() {
         sec
     )} ${showAmPm ? amPm : ''}`;
     dateNow.innerHTML = `${days[day_]}, ${date_} ${months[month_]}`;
-    //console.log(time.innerHTML)
 
     setTimeout(showTime, 1000);
 }
 
 // Add Zeros
-function addZero(n) {
+function addZero(n):string {
     if (parseInt(n, 10) < 10) {
         return '0' + n;
     } else {
