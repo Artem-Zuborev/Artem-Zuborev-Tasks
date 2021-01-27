@@ -1,13 +1,13 @@
 import {renderCalendar} from "./script";
 
-const input = document.querySelector("input[type = 'text']");
-const ul = document.querySelector("ul");
+const input: HTMLInputElement = <HTMLInputElement> document.querySelector("input[type = 'text']");
+const ul: HTMLElement = <HTMLElement> document.querySelector("ul");
 const spans: any = document.getElementsByTagName("span");
-const pencil = document.querySelector("#pencil");
-const saveBtn = document.querySelector(".todo__save");
-const clearBtn = document.querySelector(".todo__clear");
+const pencil: HTMLElement = <HTMLElement> document.querySelector("#pencil");
+const saveBtn: HTMLElement = <HTMLElement> document.querySelector(".todo__save");
+const clearBtn: HTMLElement = <HTMLElement> document.querySelector(".todo__clear");
 
-interface test {
+interface todo {
     [options: string]: tasks
 }
 
@@ -16,10 +16,10 @@ interface tasks {
     completedToDo?: string[]
 }
 
-export let todoDates: test = {}
+export let todoDates: todo = {}
 
 //function to delete toDoList if delete span is clicked.
-export function deleteTodo() {
+export function deleteTodo(): void {
     for (let span of spans) {
         span.addEventListener("click", function (event) {
             span.parentElement.remove();
@@ -29,7 +29,7 @@ export function deleteTodo() {
 }
 
 //function to load to do if list is found in local storage.
-function loadTodo() {
+function loadTodo(): void {
     if (localStorage.getItem('todoList')) {
         todoDates = Object.assign(todoDates, JSON.parse(localStorage.getItem('todoList')))
         deleteTodo();
@@ -37,13 +37,13 @@ function loadTodo() {
 }
 
 //event listener for input to add new to do to the list.
-input.addEventListener("keypress", function (keyPressed: KeyboardEvent) {
+input.addEventListener("keypress", function (keyPressed: KeyboardEvent):void {
     if (keyPressed.which === 13) {
 //creating lists and span when enter is clicked
-        let li = document.createElement("li");
-        let spanElement = document.createElement("span");
-        let icon = document.createElement("i");
-        let newTodo = this.value;
+        let li:HTMLElement = document.createElement("li");
+        let spanElement:HTMLElement = document.createElement("span");
+        let icon:HTMLElement = document.createElement("i");
+        let newTodo:string = this.value;
         if (!newTodo) {
             return null;
         }
@@ -60,7 +60,7 @@ input.addEventListener("keypress", function (keyPressed: KeyboardEvent) {
 });
 
 
-ul.addEventListener('click', function (e: MouseEvent) {
+ul.addEventListener('click', function (e: MouseEvent):void {
         let elem: HTMLElement = <HTMLElement>e.target
         if (elem.tagName === 'LI') {
             elem.classList.toggle('checked');
@@ -69,17 +69,17 @@ ul.addEventListener('click', function (e: MouseEvent) {
 );
 
 //hide input box,when pencil icon is clicked
-pencil.addEventListener('click', function () {
+pencil.addEventListener('click', function ():void {
     input.classList.toggle('display');
 });
 
 
 //save todolist state so user can access it later
-saveBtn.addEventListener('click', function (e) {
-    let containerTasks = document.getElementById('allTasks')
-    let tasks = containerTasks.querySelectorAll('li')
-    let todo = document.getElementById('todo')
-    let todoDate = todo.dataset.date
+saveBtn.addEventListener('click', function (e):void {
+    let containerTasks:HTMLElement = document.getElementById('allTasks')
+    let tasks = Array.from(containerTasks.querySelectorAll('li'))
+    let todo:HTMLElement = document.getElementById('todo')
+    let todoDate:string = todo.dataset.date
     if (todoDates[todoDate] === undefined) {
         todoDates[todoDate] = {}
     }
@@ -100,7 +100,7 @@ saveBtn.addEventListener('click', function (e) {
 });
 
 //clear all to do when clear button is clicked
-clearBtn.addEventListener('click', function () {
+clearBtn.addEventListener('click', function ():void {
     ul.innerHTML = "";
     localStorage.removeItem('todoList');
 });
