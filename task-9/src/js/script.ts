@@ -7,24 +7,26 @@ import {deleteTodo, todoDates} from "./todo-list";
 
 'use strict'
 const date: Date = new Date();
-let dateContainer:string;
-const toDoList:HTMLElement = <HTMLElement> document.querySelector(".todo");
-const closeIcon:HTMLElement = <HTMLElement> document.querySelector('.close-icon');
-const monthDays:HTMLElement = <HTMLElement> document.querySelector(".days");
+let dateContainer: string;
+const toDoList: HTMLElement = <HTMLElement>document.querySelector(".todo");
+const closeIcon: HTMLElement = <HTMLElement>document.querySelector('.close-icon');
+const monthDays: HTMLElement = <HTMLElement>document.querySelector(".days");
+const jsonHoliday = require("./holiday.JSON")
+console.log(Object.values(jsonHoliday))
 
-
-export const renderCalendar = ():void => {
+export const renderCalendar = (): void => {
     renderDays();
     renderMonth();
 };
+
 function renderDays(): void {
     // generate days
     date.setDate(1);
-    const lastDay:number = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-    const prevLastDay:number = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
-    const firstDayIndex:number = date.getDay();
-    const lastDayIndex:number = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
-    const nextDays:number = 7 - lastDayIndex;
+    const lastDay: number = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+    const prevLastDay: number = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
+    const firstDayIndex: number = date.getDay();
+    const lastDayIndex: number = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
+    const nextDays: number = 7 - lastDayIndex;
 
 
     monthDays.innerHTML = '';
@@ -55,8 +57,9 @@ function renderDays(): void {
     }
     for (let j = 1; j <= nextDays; j++) {
         dateContainer = `${normalizeMonth(date.getMonth(), date.getFullYear()).year}/${normalizeMonth(date.getMonth() + 1, date.getFullYear()).month}/${j}`
-        monthDays.insertAdjacentElement("beforeend", addDay(j, 'days__next-date'));
+        monthDays.insertAdjacentElement("beforeend", addDay(j, 'days__next-date',j));
     }
+
 }
 
 function renderMonth(): void {
@@ -75,7 +78,7 @@ function renderMonth(): void {
         "December",
     ];
     const colorMonth: HTMLElement = <HTMLElement>document.querySelector(".month")
-    document.querySelector(".date h1").innerHTML  = months[date.getMonth()];
+    document.querySelector(".date h1").innerHTML = months[date.getMonth()];
     if (months[date.getMonth()] === months[0] || months[date.getMonth()] === months[1] || months[date.getMonth()] === months[11]) {
         colorMonth.style.background = 'rgba(0,153,255,0.4)';
     } else if (months[date.getMonth()] === months[2] || months[date.getMonth()] === months[3] || months[date.getMonth()] === months[4]) {
@@ -89,14 +92,14 @@ function renderMonth(): void {
 }
 
 // open to do list
-monthDays.addEventListener('click', (e):void => {
+monthDays.addEventListener('click', (e): void => {
     let containerTasks = document.getElementById('allTasks');
     containerTasks.innerHTML = '';
     let elem: HTMLElement = <HTMLElement>e.target;
     if (!elem.classList.contains('days__day')) {
         return;
     }
-    let elemDate:string = elem.dataset.date;
+    let elemDate: string = elem.dataset.date;
     toDoList.dataset.date = elemDate;
     toDoList.classList.add("show");
     addTasksToContainerTasks(elemDate, 'completedToDo');
@@ -105,7 +108,7 @@ monthDays.addEventListener('click', (e):void => {
 })
 
 // close to do list
-closeIcon.addEventListener('click', (e):void => {
+closeIcon.addEventListener('click', (e): void => {
     toDoList.classList.remove("show")
     renderCalendar()
 })
@@ -115,13 +118,13 @@ closeIcon.addEventListener('click', (e):void => {
  * @param date Текущая дата
  * @param category Категория записи (актуальность) actualToDo/complitedToDo
  */
-function addTasksToContainerTasks(date:string, category:string): void {
-    let containerTasks =  document.getElementById('allTasks')
+function addTasksToContainerTasks(date: string, category: string): void {
+    let containerTasks = document.getElementById('allTasks')
     let basketHTML: string = `<span><i class="fas fa-trash-alt"></i></span>`
     if (todoDates[date] !== undefined) {
         if (todoDates[date][category] !== undefined) {
             todoDates[date][category].forEach(item => {
-                let li: HTMLElement = <HTMLElement> document.createElement('li')
+                let li: HTMLElement = <HTMLElement>document.createElement('li')
                 li.innerText = item
                 li.insertAdjacentHTML('afterbegin', basketHTML);
                 if (category === 'completedToDo') {
@@ -140,7 +143,7 @@ function addTasksToContainerTasks(date:string, category:string): void {
  * @param year Передаваемый год
  * @returns {object} Месяц и год в виде обекта
  */
-function normalizeMonth(month:number, year:number): any {
+function normalizeMonth(month: number, year: number): any {
     if (month <= -1) {
         return {
             month: 12,
@@ -157,7 +160,7 @@ function normalizeMonth(month:number, year:number): any {
     }
 }
 
-function addDay(data:any, newClass: string, numDay?:number):HTMLElement {
+function addDay(data: any, newClass: string, numDay?: number): HTMLElement {
     let day = document.createElement('div');
     day.classList.add('days__day');
     day.classList.add(newClass);
@@ -168,6 +171,11 @@ function addDay(data:any, newClass: string, numDay?:number):HTMLElement {
         day.classList.remove('days__style')
     }
     day.dataset.date = dateContainer;
+    for (let i = 0; i < Object.values(jsonHoliday).length; i++) {
+        if (Object.values(jsonHoliday)[i] === dateContainer) {
+            day.classList.add('days__holiday');
+        }
+    }
     if (numDay === 0 || numDay === 6) {
         day.classList.add('days__holiday');
     }
@@ -183,11 +191,11 @@ function isTask(date): boolean {
     return task
 }
 
-document.querySelector(".prev").addEventListener("click", ():void => {
+document.querySelector(".prev").addEventListener("click", (): void => {
     date.setMonth(date.getMonth() - 1);
     renderCalendar();
 });
-document.querySelector(".next").addEventListener("click", ():void => {
+document.querySelector(".next").addEventListener("click", (): void => {
     date.setMonth(date.getMonth() + 1);
     renderCalendar();
 });
