@@ -16,15 +16,20 @@ closeIconWeather.addEventListener('click', (e):void => {
 })
 
 async function getWeather():Promise<any> {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=ru&appid=6b927d86de68c0b3f2e963ce6ccad2f8&units=metric`;
-    const res = await fetch(url);
-    const data = await res.json();
-    renderWeather(data)
+    try {
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=ru&appid=6b927d86de68c0b3f2e963ce6ccad2f8&units=metric`;
+        const res = await fetch(url);
+        const data = await res.json();
+        renderWeather(data)
+    } catch (e) {
+        temperature.textContent = `Error! ${e}`;
+    }
+
 }
 
-getWeather().catch(e => {
-    console.log(`Error! ${e}`)
-})
+// getWeather().catch(e => {
+//     console.log(`Error! ${e}`)
+// })
 
 function renderWeather(data):void {
     temperature.textContent = `${Math.round(data.main.temp)}°C`;
