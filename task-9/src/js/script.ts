@@ -3,6 +3,7 @@ import '../css/style.scss';
 import './weather';
 import './get-quote';
 import './show-time';
+import './settings';
 import {deleteTodo, todoDates} from "./todo-list";
 
 'use strict'
@@ -57,7 +58,7 @@ function renderDays(): void {
     }
     for (let j = 1; j <= nextDays; j++) {
         dateContainer = `${normalizeMonth(date.getMonth(), date.getFullYear()).year}/${normalizeMonth(date.getMonth() + 1, date.getFullYear()).month}/${j}`
-        monthDays.insertAdjacentElement("beforeend", addDay(j, 'days__next-date',j));
+        monthDays.insertAdjacentElement("beforeend", addDay(j, 'days__next-date', j));
     }
 
 }
@@ -178,6 +179,13 @@ function addDay(data: any, newClass: string, numDay?: number): HTMLElement {
     }
     if (numDay === 0 || numDay === 6) {
         day.classList.add('days__holiday');
+    }
+    if (localStorage.getItem('checkedPrevDays')) {
+        if (day.classList.contains('days__prev-date') || day.classList.contains('days__next-date')) {
+            day.classList.toggle('days__prev-date-invisible')
+        }
+    }else{
+        day.classList.remove('days__prev-date-invisible')
     }
     return day;
 }
