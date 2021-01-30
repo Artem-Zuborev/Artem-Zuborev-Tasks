@@ -348,11 +348,17 @@ div {
     opacity: 0.5;
     z-index: -1;
   }
+  &__prev-date-invisible,
+  &__next-date-invisible {
+    opacity: 0;
+  }
 }
 
 .prev {
   transition: .3s;
 }
-
+.turn-off{
+  display: none;
+}
 
 
