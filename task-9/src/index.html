@@ -44,11 +44,20 @@
                 <i class="fas fa-cog config"></i>
             </label>
             <div class="menu-box">
-                <span class="menu-box__settings">Settings...</span>
-                <form>
-                    <input type="checkbox" name="start"> <span>Start week on Sunday</span>
+                <div class="menu-box__settings">Settings...</div>
+                <div>
+                    <input class="menu-box__turn-off-start-week" id="turn-off-start-week" type="checkbox" name="start">
+                    <label for="turn-off-start-week">Start week on Sunday</label>
+                </div>
+                <div>
+                    <input class="menu-box__turn-off-todo" id="turn-off-todo" type="checkbox" name="start">
+                    <label for="turn-off-todo">Turn Off To Do List</label>
+                </div>
+                <div>
+                    <input class="menu-box__turn-off-prev-day" id="turn-off-prev-day" type="checkbox" name="start">
+                    <label for="turn-off-prev-day">Turn Off days of the previous and next month</label>
+                </div>
 
-                </form>
             </div>
         </div>
         <div id="todo" class="todo">
