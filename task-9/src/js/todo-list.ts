@@ -2,7 +2,7 @@ import {renderCalendar} from "./script";
 
 const input: HTMLInputElement = <HTMLInputElement> document.querySelector("input[type = 'text']");
 const ul: HTMLElement = <HTMLElement> document.querySelector("ul");
-const spans: any = document.getElementsByTagName("span");
+const spans: HTMLCollectionOf<any> =  document.getElementsByTagName("span");
 const pencil: HTMLElement = <HTMLElement> document.querySelector("#pencil");
 const saveBtn: HTMLElement = <HTMLElement> document.querySelector(".todo__save");
 const clearBtn: HTMLElement = <HTMLElement> document.querySelector(".todo__clear");
@@ -20,7 +20,7 @@ export let todoDates: todo = {}
 
 //function to delete toDoList if delete span is clicked.
 export function deleteTodo(): void {
-    for (let span of spans) {
+    for (let span of Array.from(spans)) {
         span.addEventListener("click", function (event) {
             span.parentElement.remove();
             event.stopPropagation();
