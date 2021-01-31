@@ -1,8 +1,44 @@
+import {renderCalendar} from "./script";
+
 const settingsBox = document.querySelector('.menu-box');
 const turnOffStartWeek = document.querySelector('.menu-box__turn-off-start-week');
 const turnOffToDoList: HTMLInputElement = <HTMLInputElement>document.querySelector('.menu-box__turn-off-todo');
 const toDoList: HTMLElement = <HTMLElement>document.querySelector(".todo");
 const turnOffPrevDays: HTMLInputElement = <HTMLInputElement>document.querySelector('.menu-box__turn-off-prev-day');
+const chooseDayOff = document.forms['menu-box__choose-day']
+export let weekendDays:number[]=[]
+
+
+chooseDayOff.addEventListener('click', (e): void => {
+    let elem = e.target;
+    if (!elem.classList.contains('menu-box__choose-day-off')) {
+        return
+    }
+    if (elem.checked) {
+        weekendDays.push(Number(elem.value));
+
+        localStorage.setItem('chooseDayOff', JSON.stringify(weekendDays))
+        renderCalendar()
+    } else {
+        weekendDays.splice(weekendDays.indexOf(Number(elem.value)),1)
+        localStorage.setItem('chooseDayOff', JSON.stringify(weekendDays))
+        renderCalendar()
+    }
+})
+function loadLocalWeekEnd():void{
+    const days:NodeListOf<HTMLInputElement>=document.querySelectorAll('.menu-box__choose-day-off')
+    let strJson:string=localStorage.getItem('chooseDayOff')
+    weekendDays=JSON.parse(strJson)
+    days.forEach((item:HTMLInputElement)=>{
+        if (weekendDays.includes(Number(item.value))){
+            item.checked=true
+            localStorage.setItem('chooseDayOff', JSON.stringify(weekendDays))
+        }
+
+    })
+}
+loadLocalWeekEnd()
+
 
 turnOffToDoList.addEventListener('click', function (e: MouseEvent): void {
     if (turnOffToDoList.checked) {
@@ -13,10 +49,9 @@ turnOffToDoList.addEventListener('click', function (e: MouseEvent): void {
         toDoList.classList.remove("show")
         localStorage.removeItem('checkedToDo');
     }
-    //e.stopImmediatePropagation()
 })
 
-function loadCheckedToDo() {
+function loadCheckedToDo(): void {
     if (localStorage.getItem('checkedToDo')) {
         turnOffToDoList.setAttribute('checked', 'true');
         if (turnOffToDoList.checked) {
@@ -25,31 +60,25 @@ function loadCheckedToDo() {
     }
 }
 
-loadCheckedToDo()
-
 turnOffPrevDays.addEventListener('click', function (e: MouseEvent): void {
     if (turnOffPrevDays.checked) {
         localStorage.setItem('checkedPrevDays', String(turnOffPrevDays.checked));
-        location.reload()
+        renderCalendar()
     } else {
         localStorage.removeItem('checkedPrevDays');
-        location.reload()
+        renderCalendar()
     }
 })
-function loadCheckedPrevDays() {
+
+function loadCheckedPrevDays(): void {
     if (localStorage.getItem('checkedPrevDays')) {
         turnOffPrevDays.setAttribute('checked', 'true');
-        // if (turnOffToDoList.checked) {
-        //     toDoList.classList.toggle("turn-off");
-        // }
     }
 }
+
+loadCheckedToDo()
 loadCheckedPrevDays()
-// if (localStorage.getItem('checkedPrevDays')) {
-//     if(allDays.classList.contains('days__prev-date') || day.classList.contains('days__next-date')){
-//         day.classList.toggle('days__prev-date-invisible')
-//     }
-// }
+
 
 
 
