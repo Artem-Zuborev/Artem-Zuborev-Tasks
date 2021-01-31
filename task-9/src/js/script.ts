@@ -180,9 +180,6 @@ function addDay(data: number, newClass: string, numDay?: number): HTMLElement {
             day.classList.add('days__holiday');
         }
     }
-
-
-
     if (weekendDays.includes(numDay)) {
         day.classList.add('days__holiday');
     }
