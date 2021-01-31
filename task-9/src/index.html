@@ -45,19 +45,46 @@
             </label>
             <div class="menu-box">
                 <div class="menu-box__settings">Settings...</div>
+                <hr>
                 <div>
                     <input class="menu-box__turn-off-start-week" id="turn-off-start-week" type="checkbox" name="start">
                     <label for="turn-off-start-week">Start week on Sunday</label>
                 </div>
+                <hr>
                 <div>
                     <input class="menu-box__turn-off-todo" id="turn-off-todo" type="checkbox" name="start">
                     <label for="turn-off-todo">Turn Off To Do List</label>
                 </div>
+                <hr>
                 <div>
                     <input class="menu-box__turn-off-prev-day" id="turn-off-prev-day" type="checkbox" name="start">
                     <label for="turn-off-prev-day">Turn Off days of the previous and next month</label>
                 </div>
+                <hr>
+                <form class="menu-box__choose-day" name="menu-box__choose-day">
+                    <div>Choose a day off:</div>
+                    <input class="menu-box__choose-day-off" id="choose-day-off1" type="checkbox" name="holiday" value="1">
+                    <label for="choose-day-off1">Mon</label>
 
+                    <input class="menu-box__choose-day-off" id="choose-day-off2" type="checkbox" name="holiday" value="2">
+                    <label for="choose-day-off2">Tue</label>
+
+                    <input class="menu-box__choose-day-off" id="choose-day-off3" type="checkbox" name="holiday" value="3">
+                    <label for="choose-day-off3">Wed</label>
+
+                    <input class="menu-box__choose-day-off" id="choose-day-off4" type="checkbox" name="holiday" value="4">
+                    <label for="choose-day-off4">Thu</label>
+
+                    <input class="menu-box__choose-day-off" id="choose-day-off5" type="checkbox" name="holiday" value="5">
+                    <label for="choose-day-off5">Fri</label>
+
+                    <input class="menu-box__choose-day-off" id="choose-day-off6" type="checkbox" name="holiday" value="6" checked>
+                    <label for="choose-day-off6">Sat</label>
+
+                    <input class="menu-box__choose-day-off" id="choose-day-off7" type="checkbox" name="holiday" value="0" checked>
+                    <label for="choose-day-off7">Sun</label>
+                </form>
+                <hr>
             </div>
         </div>
         <div id="todo" class="todo">
