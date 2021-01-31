@@ -6,7 +6,7 @@ const turnOffToDoList: HTMLInputElement = <HTMLInputElement>document.querySelect
 const toDoList: HTMLElement = <HTMLElement>document.querySelector(".todo");
 const turnOffPrevDays: HTMLInputElement = <HTMLInputElement>document.querySelector('.menu-box__turn-off-prev-day');
 const chooseDayOff = document.forms['menu-box__choose-day']
-export let weekendDays:number[]=[]
+export let weekendDays:number[]=[0,6]
 
 
 chooseDayOff.addEventListener('click', (e): void => {
@@ -16,7 +16,6 @@ chooseDayOff.addEventListener('click', (e): void => {
     }
     if (elem.checked) {
         weekendDays.push(Number(elem.value));
-
         localStorage.setItem('chooseDayOff', JSON.stringify(weekendDays))
         renderCalendar()
     } else {
@@ -30,11 +29,12 @@ function loadLocalWeekEnd():void{
     let strJson:string=localStorage.getItem('chooseDayOff')
     weekendDays=JSON.parse(strJson)
     days.forEach((item:HTMLInputElement)=>{
-        if (weekendDays.includes(Number(item.value))){
-            item.checked=true
-            localStorage.setItem('chooseDayOff', JSON.stringify(weekendDays))
+        if(weekendDays === null){
+            weekendDays = [0,6]
         }
-
+        if (weekendDays.includes(Number(item.value))){
+            item.checked=true;
+        }
     })
 }
 loadLocalWeekEnd()
