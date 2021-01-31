@@ -5,15 +5,17 @@ import './get-quote';
 import './show-time';
 import './settings';
 import {deleteTodo, todoDates} from "./todo-list";
+import { weekendDays } from './settings';
 
 'use strict'
 const date: Date = new Date();
+
 let dateContainer: string;
 const toDoList: HTMLElement = <HTMLElement>document.querySelector(".todo");
 const closeIcon: HTMLElement = <HTMLElement>document.querySelector('.close-icon');
 const monthDays: HTMLElement = <HTMLElement>document.querySelector(".days");
 const jsonHoliday = require("./holiday.JSON")
-console.log(Object.values(jsonHoliday))
+
 
 export const renderCalendar = (): void => {
     renderDays();
@@ -33,12 +35,12 @@ function renderDays(): void {
     monthDays.innerHTML = '';
     for (let x = firstDayIndex; x > 1; x--) {
         dateContainer = `${normalizeMonth(date.getMonth() - 1, date.getFullYear()).year}/${normalizeMonth(date.getMonth() - 1, date.getFullYear()).month}/${prevLastDay - x + 2}`
-        monthDays.insertAdjacentElement("beforeend", addDay(prevLastDay - x + 2, 'days__prev-date', x));
+        monthDays.insertAdjacentElement("beforeend", addDay(prevLastDay - x + 2, 'days__prev-date', (new Date(dateContainer).getDay())));
     }
     if (firstDayIndex === 0) {
         for (let z = 5; z >= 0; z--) {
             dateContainer = `${normalizeMonth(date.getMonth() - 1, date.getFullYear()).year}/${normalizeMonth(date.getMonth() - 1, date.getFullYear()).month}/${prevLastDay - z}`
-            monthDays.insertAdjacentElement("beforeend", addDay(prevLastDay - z, 'days__prev-date', z));
+            monthDays.insertAdjacentElement("beforeend", addDay(prevLastDay - z, 'days__prev-date', (new Date(dateContainer).getDay())));
         }
     }
 
@@ -58,7 +60,7 @@ function renderDays(): void {
     }
     for (let j = 1; j <= nextDays; j++) {
         dateContainer = `${normalizeMonth(date.getMonth(), date.getFullYear()).year}/${normalizeMonth(date.getMonth() + 1, date.getFullYear()).month}/${j}`
-        monthDays.insertAdjacentElement("beforeend", addDay(j, 'days__next-date', j));
+        monthDays.insertAdjacentElement("beforeend", addDay(j, 'days__next-date', (new Date(dateContainer).getDay())));
     }
 
 }
@@ -144,7 +146,8 @@ function addTasksToContainerTasks(date: string, category: string): void {
  * @param year Передаваемый год
  * @returns {object} Месяц и год в виде обекта
  */
-function normalizeMonth(month: number, year: number): any {
+
+function normalizeMonth(month: number, year: number): { month: number; year: number } {
     if (month <= -1) {
         return {
             month: 12,
@@ -161,11 +164,11 @@ function normalizeMonth(month: number, year: number): any {
     }
 }
 
-function addDay(data: any, newClass: string, numDay?: number): HTMLElement {
+function addDay(data: number, newClass: string, numDay?: number): HTMLElement {
     let day = document.createElement('div');
     day.classList.add('days__day');
     day.classList.add(newClass);
-    day.innerText = data;
+    day.innerText = String(data);
     if (isTask(dateContainer)) {
         day.classList.add('days__style')
     } else {
@@ -177,14 +180,17 @@ function addDay(data: any, newClass: string, numDay?: number): HTMLElement {
             day.classList.add('days__holiday');
         }
     }
-    if (numDay === 0 || numDay === 6) {
+
+
+
+    if (weekendDays.includes(numDay)) {
         day.classList.add('days__holiday');
     }
     if (localStorage.getItem('checkedPrevDays')) {
         if (day.classList.contains('days__prev-date') || day.classList.contains('days__next-date')) {
             day.classList.toggle('days__prev-date-invisible')
         }
-    }else{
+    } else {
         day.classList.remove('days__prev-date-invisible')
     }
     return day;
