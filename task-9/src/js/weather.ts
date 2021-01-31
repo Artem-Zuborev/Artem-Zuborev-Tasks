@@ -15,7 +15,7 @@ closeIconWeather.addEventListener('click', (e):void => {
     weather.classList.remove('show-container-weather')
 })
 
-async function getWeather():Promise<any> {
+async function getWeather():Promise<void> {
     try {
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=ru&appid=6b927d86de68c0b3f2e963ce6ccad2f8&units=metric`;
         const res = await fetch(url);
