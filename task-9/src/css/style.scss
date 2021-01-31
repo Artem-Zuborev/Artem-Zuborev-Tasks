@@ -125,6 +125,9 @@ html {
   background: $color_2;
   box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
   transition-duration: .4s;
+  &__settings{
+    font-size: 30px;
+  }
 }
 
 #menu__toggle:checked ~ .menu-box {
