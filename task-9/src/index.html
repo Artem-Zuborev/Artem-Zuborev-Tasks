@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Calendar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Bad+Script" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+    <div class="calendar">
+        <div class="container-weather">
+            <i class="far fa-times-circle close-icon-weather"></i>
+            <div class="weather" id="weather">
+                <time class="time" id="time"></time>
+                <div class="weather__date" id="date"></div>
+                <div class="weather__city-name" id="city-name" contenteditable="true">Могилёв</div>
+                <div class="weather__temp">
+                    <div class="weather__temperature" id="temperature"></div>
+                </div>
+                <div class="weather__info">
+                    <div class="weather__description"></div>
+                    <div class="weather__wind-speed"></div>
+                    <div class="weather__humidity"></div>
+                </div>
+            </div>
+            <figure class="quote">
+                <div class="quote-day">Цитата дня:</div>
+                <blockquote>
+                </blockquote>
+                <figcaption>
+                </figcaption>
+                <button class="quote__btn">Next quote</button>
+            </figure>
+        </div>
+        <div class="settings-menu">
+            <input id="menu__toggle" type="checkbox"/>
+            <label class="menu__btn" for="menu__toggle">
+                <i class="fas fa-cog config"></i>
+            </label>
+            <div class="menu-box">
+                <div class="menu-box__settings">Settings...</div>
+                <hr>
+                <div>
+                    <input class="menu-box__turn-off-start-week" id="turn-off-start-week" type="checkbox" name="start">
+                    <label for="turn-off-start-week">Start week on Sunday</label>
+                </div>
+                <hr>
+                <div>
+                    <input class="menu-box__turn-off-todo" id="turn-off-todo" type="checkbox" name="start">
+                    <label for="turn-off-todo">Turn Off To Do List</label>
+                </div>
+                <hr>
+                <div>
+                    <input class="menu-box__turn-off-prev-day" id="turn-off-prev-day" type="checkbox" name="start">
+                    <label for="turn-off-prev-day">Turn Off days of the previous and next month</label>
+                </div>
+                <hr>
+                <form class="menu-box__choose-day" name="menu-box__choose-day">
+                    <div>Choose a day off:</div>
+                    <input class="menu-box__choose-day-off" id="choose-day-off1" type="checkbox" name="holiday" value="1">
+                    <label for="choose-day-off1">Mon</label>
+
+                    <input class="menu-box__choose-day-off" id="choose-day-off2" type="checkbox" name="holiday" value="2">
+                    <label for="choose-day-off2">Tue</label>
+
+                    <input class="menu-box__choose-day-off" id="choose-day-off3" type="checkbox" name="holiday" value="3">
+                    <label for="choose-day-off3">Wed</label>
+
+                    <input class="menu-box__choose-day-off" id="choose-day-off4" type="checkbox" name="holiday" value="4">
+                    <label for="choose-day-off4">Thu</label>
+
+                    <input class="menu-box__choose-day-off" id="choose-day-off5" type="checkbox" name="holiday" value="5">
+                    <label for="choose-day-off5">Fri</label>
+
+                    <input class="menu-box__choose-day-off" id="choose-day-off6" type="checkbox" name="holiday" checked value="6">
+                    <label for="choose-day-off6">Sat</label>
+
+                    <input class="menu-box__choose-day-off" id="choose-day-off7" type="checkbox" name="holiday" checked value="0">
+                    <label for="choose-day-off7">Sun</label>
+                </form>
+                <hr>
+            </div>
+        </div>
+        <div id="todo" class="todo">
+            <i class="far fa-times-circle close-icon"></i>
+            <h1 class="todo__my-list"> TO-DO LIST <i id="pencil" class="fas fa-pencil-alt pencil"></i></h1>
+            <input class="todo__enter-tasks" type="text" placeholder="Add New Todo">
+            <ul id="allTasks" class="todo__todos"></ul>
+            <div id="buttons" class="todo__buttons">
+                <button class="todo__save todo__btn">Save</button>
+                <button class="todo__clear todo__btn">Clear</button>
+            </div>
+        </div>
+        <div class="month">
+            <i class="fas fa-umbrella open-weather"></i>
+            <i class="fas fa-angle-left prev"></i>
+            <div class="date">
+                <h1 id="actualMonth"></h1>
+                <p></p>
+            </div>
+            <i class="fas fa-angle-right next"></i>
+        </div>
+        <div class="weekdays">
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+            <div>Sun</div>
+        </div>
+        <div class="days"></div>
+    </div>
+</div>
+</body>
+
+
+</html>

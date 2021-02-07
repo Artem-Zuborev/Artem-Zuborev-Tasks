@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "outDir": "./app/",
+    "noImplicitAny": false,
+    "module": "commonjs",
+    "target": "es5",
+    "allowJs": true,
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+  },
+  "include": [
+    "./src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
