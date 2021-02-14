@@ -1,12 +1,17 @@
+<div class="search" xmlns:https="http://www.w3.org/1999/xhtml">
+  <h4><label for="search-box">Pokemon Search</label></h4>
+  <input class="search-box" id="search-box" autocomplete="off" [(ngModel)]="name">
+</div>
 <div class="pokemon-grid">
   <div
     class="box"
-    *ngFor="let pokemon of pokemons | paginate:{itemsPerPage:10, currentPage: page, totalItems: totalPokemons}">
+    *ngFor="let pokemon of pokemons| paginate:{itemsPerPage:12, currentPage: page, totalItems: totalPokemons}|filter: name">
     <img class="box__img-pokemon" [src]="pokemon.sprites.other.dream_world.front_default" alt="">
     <h3>{{pokemon.name | uppercase}}</h3>
   </div>
 </div>
 
 <pagination-controls (pageChange)="page = $event; pokemons=[]; getPokemons()"></pagination-controls>
+
 
 
