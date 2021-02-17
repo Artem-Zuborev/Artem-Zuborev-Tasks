@@ -3,7 +3,6 @@
   grid-gap: 16px;
   padding: 20px;
   grid-template-columns: repeat(auto-fit, minmax(23%, 1fr));
-  background-color: #d4edf4;
 }
 
 .pokemon-grid .box {
@@ -18,7 +17,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fce8d8;
+  background: #A1FFCE;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FAFFD1, #A1FFCE);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 
   &__img-pokemon {
     text-align: center;

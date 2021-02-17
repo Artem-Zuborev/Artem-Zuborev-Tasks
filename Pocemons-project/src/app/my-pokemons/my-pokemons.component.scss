@@ -1,0 +1,19 @@
+
+ngb-carousel{
+  height: 500px;
+  outline: none;
+}
+.picsum-img-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f1404b;
+}
+.picsum-img-wrapper img{
+  width: 300px;
+  height: 300px;
+}
+.carousel-control-prev,
+.carousel-control-next{
+  color: aquamarine!important;
+}

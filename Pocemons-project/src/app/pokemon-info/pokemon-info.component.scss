@@ -1,0 +1,10 @@
+.pokemon-info{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__image{
+    height: 400px;
+    width: 400px;
+  }
+}

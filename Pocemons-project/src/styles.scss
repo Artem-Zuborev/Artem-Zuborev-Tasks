@@ -1,7 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~hamburgers/_sass/hamburgers/hamburgers.scss';
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: #283c86;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #45a247, #283c86);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #45a247, #283c86); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
 
 
 .pagination-previous,.pagination-next{
@@ -17,9 +23,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   border-radius: 15px!important;
 }
 .ngx-pagination{
-  background-color: #d4edf4!important;
   margin: 0!important;
 }
 pagination-controls {
   text-align: center;
 }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

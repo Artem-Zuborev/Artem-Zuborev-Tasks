@@ -11,6 +11,10 @@ import {SearchFilterPipe} from './pipes/search-filter.pipe';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MenuComponent } from './menu/menu.component';
 import { AboutPokemonsComponent } from './about-pokemons/about-pokemons.component';
+import { MyPokemonsComponent } from './my-pokemons/my-pokemons.component';
+import { PokemonInfoComponent } from './pokemon-info/pokemon-info.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @NgModule({
@@ -21,6 +25,8 @@ import { AboutPokemonsComponent } from './about-pokemons/about-pokemons.componen
     SearchFilterPipe,
     MenuComponent,
     AboutPokemonsComponent,
+    MyPokemonsComponent,
+    PokemonInfoComponent,
     ],
   imports: [
     BrowserModule,
@@ -29,6 +35,7 @@ import { AboutPokemonsComponent } from './about-pokemons/about-pokemons.componen
     NgxPaginationModule,
     FormsModule,
     BrowserAnimationsModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
