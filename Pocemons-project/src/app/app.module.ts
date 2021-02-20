@@ -14,6 +14,7 @@ import { AboutPokemonsComponent } from './about-pokemons/about-pokemons.componen
 import { MyPokemonsComponent } from './my-pokemons/my-pokemons.component';
 import { PokemonInfoComponent } from './pokemon-info/pokemon-info.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { GameComponent } from './game/game.component';
 
 
 
@@ -27,6 +28,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AboutPokemonsComponent,
     MyPokemonsComponent,
     PokemonInfoComponent,
+    GameComponent,
     ],
   imports: [
     BrowserModule,
