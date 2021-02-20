@@ -45,8 +45,8 @@ export class PokemonsListComponent implements OnInit, OnDestroy {
       });
   }
 
-// tslint:disable-next-line:typedef
-  ngOnDestroy() {
+
+  ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 }

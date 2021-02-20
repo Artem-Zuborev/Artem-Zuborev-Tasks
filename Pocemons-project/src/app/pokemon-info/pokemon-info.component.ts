@@ -3,6 +3,7 @@ import {Pokemon} from '../pokemon.service';
 import {Subscription} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
+
 @Component({
   selector: 'app-pokemon-info',
   templateUrl: './pokemon-info.component.html',
@@ -22,9 +23,11 @@ export class PokemonInfoComponent implements OnInit, OnDestroy {
   experience;
   myPoke;
   count = 0;
+
   constructor(private pokemonService: Pokemon,
               private http: HttpClient,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     this.subscription = this.pokemonService.getApi(648)
@@ -52,15 +55,15 @@ export class PokemonInfoComponent implements OnInit, OnDestroy {
               );
               this.arrayOfPokemons.sort((a, b) => a.id > b.id ? 1 : -1);
               this.route.paramMap.subscribe(params => {
-                  this.pokemon = this.arrayOfPokemons[+params.get('id') - 1];
-                });
+                this.pokemon = this.arrayOfPokemons[+params.get('id') - 1];
+              });
             });
         });
 
       });
   }
-  // tslint:disable-next-line:typedef
-  ngOnDestroy() {
+
+  ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 }
