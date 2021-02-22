@@ -13,7 +13,7 @@ import {Subscription} from 'rxjs';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss']
 })
-export class GameComponent implements OnInit{
+export class GameComponent implements OnInit {
   @ViewChild('cardsFirst', {static: true}) cardsBlockOne: ElementRef;
   @ViewChild('cardsSecond', {static: true}) cardsBlockTwo: ElementRef;
   @ViewChild('cardsThird', {static: true}) cardsBlockThree: ElementRef;
@@ -38,6 +38,7 @@ export class GameComponent implements OnInit{
   abilities;
   namePok;
   imgPok;
+  notPoke;
 
   constructor(private pokemonService: Pokemon,
               private http: HttpClient) {
@@ -86,6 +87,12 @@ export class GameComponent implements OnInit{
                 this.experience = this.newItemPoke.base_experience;
                 this.namePok = this.newItemPoke.name;
                 this.imgPok = this.newItemPoke.sprites.other.dream_world.front_default;
+              }
+              else if (isNaN(this.result)) {
+                this.notPoke = 'Сегодня не твой день!';
+              }
+              else if (!isNaN(this.result)) {
+                this.notPoke = '';
               }
             });
         });
