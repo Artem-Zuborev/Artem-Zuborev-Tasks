@@ -1,0 +1,36 @@
+<div class="shadow shadow__position"></div>
+<div class="random random__position">
+  <div class="result"></div>
+  <div #cardsFirst class="cards">
+    <div #cardItemOne class="cards__item"
+         *ngFor="let card of cardsOne">
+      {{card}}</div>
+  </div>
+</div>
+
+<div class="shadow shadow__position-1"></div>
+<div class="random random__position-1">
+  <div class="result"></div>
+  <div #cardsSecond class="cards-1">
+    <div #cardItemTwo class="cards__item"
+         *ngFor="let card of cardsTwo">
+      {{card}}</div>
+  </div>
+</div>
+
+<div class="shadow shadow__position-2"></div>
+<div class="random random__position-2">
+  <div class="result"></div>
+  <div #cardsThird class="cards-2">
+    <div #cardItemThree class="cards__item"
+         *ngFor="let card of cardsThree">
+      {{card}}</div>
+  </div>
+</div>
+
+<button  class="start" (click)="start()">START</button>
+<div class="pokemon-info">
+  <img [src]="imgPok" alt="">
+  <div class="pokemon-info__name">{{namePok | uppercase}}</div>
+</div>
+<div>{{notPoke}}</div>
