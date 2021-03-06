@@ -16,7 +16,8 @@ import {PokemonInfoComponent} from './pokemon-info/pokemon-info.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {GameComponent} from './game/game.component';
 import { SocialBarComponent } from './social-bar/social-bar.component';
-
+import { PokemonsComponent } from './pokemons/pokemons.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { SocialBarComponent } from './social-bar/social-bar.component';
     PokemonInfoComponent,
     GameComponent,
     SocialBarComponent,
+    PokemonsComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,7 @@ import { SocialBarComponent } from './social-bar/social-bar.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     NgbModule,
+    MatBadgeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
