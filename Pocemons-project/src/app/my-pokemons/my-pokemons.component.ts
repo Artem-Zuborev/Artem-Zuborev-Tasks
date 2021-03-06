@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NgbCarousel, NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 import {HttpClient} from '@angular/common/http';
 import {Subscription} from 'rxjs';
 import {Pokemon} from '../pokemon.service';
@@ -18,6 +18,12 @@ export class MyPokemonsComponent implements OnInit {
   images;
   arrayOfPokemons = [];
   namePok;
+  myPokemons;
+  i;
+  private abilities: any;
+  private experience: any;
+  private idPok: any;
+  typePokemon;
 
   constructor(private config: NgbCarouselConfig,
               private http: HttpClient,
@@ -29,22 +35,41 @@ export class MyPokemonsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.subscription = this.pokemonService.getApi()
+    this.subscription = this.pokemonService.getApi(648)
       .subscribe((response: any) => {
         this.pokemonsDetail = response;
         this.pokemonsDetail.results.forEach(result => {
           this.http.get(result.url)
             .subscribe(item => {
               this.newItem = item;
-              this.namePok = this.newItem.name;
-              this.imgPok = this.newItem.sprites.other.dream_world.front_default;
-              this.arrayOfPokemons.push(this.imgPok);
-              this.images = this.arrayOfPokemons;
-              console.log(this.images);
+              this.myPokemons = JSON.parse(localStorage.getItem('myPokemons'));
+              console.log(this.myPokemons);
+              // tslint:disable-next-line:prefer-for-of
+              for (let i = 0; i < this.myPokemons.length; i++) {
+                if (this.newItem.name === this.myPokemons[i]) {
+                  this.typePokemon = this.newItem.types[0].type.name;
+                  this.abilities = this.newItem.abilities;
+                  this.experience = this.newItem.base_experience;
+                  this.namePok = this.newItem.name;
+                  this.idPok = this.newItem.id;
+                  this.imgPok = this.newItem.sprites.other.dream_world.front_default;
+                  this.arrayOfPokemons.push(
+                    {
+                      name: this.namePok,
+                      id: (this.idPok),
+                      photo: this.imgPok,
+                      type: this.typePokemon,
+                      abilities: this.abilities,
+                      experience: this.experience
+                    }
+                  );
+                }
+              }
             });
         });
       });
-
   }
-
 }
+
+
+
