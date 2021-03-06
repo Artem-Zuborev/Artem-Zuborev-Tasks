@@ -6,14 +6,25 @@ import {
 } from '@angular/core';
 import {Pokemon} from '../pokemon.service';
 import {HttpClient} from '@angular/common/http';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
+import {interval} from 'rxjs';
+import {animate, state, style, transition, trigger} from '@angular/animations';
+
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.scss']
+  styleUrls: ['./game.component.scss'],
+  animations: [
+    trigger('rotate', [
+      state('start', style({transform: 'rotate(0deg)'})),
+      state('end', style({transform: 'rotate(360deg)'})),
+      transition('start => end', animate(10000))
+    ])
+  ]
 })
 export class GameComponent implements OnInit {
+  @ViewChild('time', {static: true}) time: ElementRef;
   @ViewChild('cardsFirst', {static: true}) cardsBlockOne: ElementRef;
   @ViewChild('cardsSecond', {static: true}) cardsBlockTwo: ElementRef;
   @ViewChild('cardsThird', {static: true}) cardsBlockThree: ElementRef;
@@ -29,7 +40,7 @@ export class GameComponent implements OnInit {
   resultOne;
   resultTwo;
   resultThree;
-  result;
+  result1;
   subscription: Subscription;
   pokemonsDetail;
   newItemPoke;
@@ -39,15 +50,27 @@ export class GameComponent implements OnInit {
   namePok;
   imgPok;
   notPoke;
+  nameMyPokemon;
+  myPokemons = [];
+  count = 0;
+  disabled = true;
+  todayTime = Date.now();
+  active = false;
+  rotateState = 'start';
 
   constructor(private pokemonService: Pokemon,
               private http: HttpClient) {
   }
 
   ngOnInit(): void {
+    this.showTime();
+    console.log(this.time);
+    console.log(this.time.nativeElement.outerText);
   }
 
-  start(): void {
+  public start(): any {
+    this.count++;
+    console.log(this.count);
     this.randomOne = Math.floor(Math.random() * 9); // От 0 до 9
     this.randomTwo = Math.floor(Math.random() * 9); // От 0 до 9
     this.randomThree = Math.floor(Math.random() * 9); // От 0 до 9
@@ -73,30 +96,66 @@ export class GameComponent implements OnInit {
       two: this.resultTwo,
       three: this.resultThree
     });
-    this.result = Number(String(this.resultOne) + String(this.resultTwo) + String(this.resultThree));
-    console.log(this.result);
-    this.subscription = this.pokemonService.getApi(648)
-      .subscribe((response: any) => {
-        this.pokemonsDetail = response;
-        this.pokemonsDetail.results.forEach(result => {
+    this.result1 = Number(String(this.resultOne) + String(this.resultTwo) + String(this.resultThree));
+    setTimeout(() => {
+      this.subscription = this.pokemonService.getApi(648)
+        .subscribe((response: any) => {
+          this.pokemonsDetail = response;
+          console.log(this.pokemonsDetail);
+          const result = this.pokemonsDetail.results[this.result1];
+          if (result === undefined) {
+            this.notPoke = 'Lucky next time!';
+            this.typePokemon = '';
+            this.experience = '';
+            this.namePok = '';
+            this.imgPok = '';
+            return;
+          }
           this.http.get(result.url)
             .subscribe(item => {
               this.newItemPoke = item;
-              if (this.newItemPoke.id === this.result) {
-                this.typePokemon = this.newItemPoke.types[0].type.name;
-                this.experience = this.newItemPoke.base_experience;
-                this.namePok = this.newItemPoke.name;
-                this.imgPok = this.newItemPoke.sprites.other.dream_world.front_default;
-              }
-              else if (isNaN(this.result)) {
-                this.notPoke = 'Сегодня не твой день!';
-              }
-              else if (!isNaN(this.result)) {
+              this.namePok = this.newItemPoke.name;
+              this.imgPok = this.newItemPoke.sprites.other.dream_world.front_default;
+              if (isNaN(this.result1)) {
+              } else if (!isNaN(this.result1)) {
                 this.notPoke = '';
               }
-            });
+            }, error => console.log(error));
+          this.subscription.unsubscribe();
         });
-        this.subscription.unsubscribe();
-      });
+    }, 5000);
+  }
+
+  public add(): void {
+    this.nameMyPokemon = this.namePok;
+    if (localStorage.getItem('myPokemons')) {
+      this.myPokemons = JSON.parse(localStorage.getItem('myPokemons'));
+    }
+    this.myPokemons.push(this.nameMyPokemon);
+    localStorage.setItem('myPokemons', JSON.stringify(this.myPokemons));
+
+  }
+
+  public showTime(): void {
+    const source = interval(1000);
+    const subscribe = source.subscribe(val => {
+      this.todayTime = Date.now();
+      const minutes = new Date().getMinutes();
+      const hours = new Date().getHours();
+      const seconds = new Date().getSeconds();
+      this.disabled = !(hours === 10 && minutes === 0 || hours === 23 && minutes === 24);
+      if (this.count === 3) {
+        this.disabled = true;
+      }
+    });
+  }
+
+  public animateRotate(): void {
+    this.rotateState = this.rotateState === 'start' ? 'end' : 'start';
+  }
+
+  public animateRotateStop(): void {
+    this.rotateState = this.rotateState === 'start' ? 'start' : 'start';
   }
 }
+
