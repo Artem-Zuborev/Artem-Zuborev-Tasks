@@ -15,7 +15,7 @@ import {MyPokemonsComponent} from './my-pokemons/my-pokemons.component';
 import {PokemonInfoComponent} from './pokemon-info/pokemon-info.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {GameComponent} from './game/game.component';
-import {FormComponent} from './form/form.component';
+import { SocialBarComponent } from './social-bar/social-bar.component';
 
 
 @NgModule({
@@ -29,7 +29,7 @@ import {FormComponent} from './form/form.component';
     MyPokemonsComponent,
     PokemonInfoComponent,
     GameComponent,
-    FormComponent,
+    SocialBarComponent,
   ],
   imports: [
     BrowserModule,
