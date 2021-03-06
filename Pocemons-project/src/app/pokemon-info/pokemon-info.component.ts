@@ -22,6 +22,10 @@ export class PokemonInfoComponent implements OnInit, OnDestroy {
   abilities;
   experience;
   myPoke;
+  height;
+  health;
+  attackPower;
+  type;
   count = 0;
 
   constructor(private pokemonService: Pokemon,
@@ -34,6 +38,7 @@ export class PokemonInfoComponent implements OnInit, OnDestroy {
       .subscribe((response: any) => {
         this.pokemonsDetail = response;
         this.pokemonsDetail.results.forEach(result => {
+          console.log(result);
           this.http.get(result.url)
             .subscribe(item => {
               this.newItem = item;
@@ -43,6 +48,7 @@ export class PokemonInfoComponent implements OnInit, OnDestroy {
               this.namePok = this.newItem.name;
               this.idPok = this.newItem.id;
               this.imgPok = this.newItem.sprites.other.dream_world.front_default;
+              this.health = this.newItem.height;
               this.arrayOfPokemons.push(
                 {
                   name: `${this.namePok}`,
@@ -50,7 +56,8 @@ export class PokemonInfoComponent implements OnInit, OnDestroy {
                   photo: this.imgPok,
                   type: this.typePokemon,
                   abilities: this.abilities,
-                  experience: this.experience
+                  experience: this.experience,
+                  health: this.health
                 }
               );
               this.arrayOfPokemons.sort((a, b) => a.id > b.id ? 1 : -1);
@@ -64,6 +71,6 @@ export class PokemonInfoComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+     this.subscription.unsubscribe();
   }
 }
