@@ -1,0 +1,54 @@
+.pokeball {
+  z-index: 100;
+  position: absolute;
+  right: 10px;
+  top: 20px;
+
+  &__img {
+    width: 150px;
+    height: 100px;
+  }
+}
+
+.pokemon-box {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  right: -500px;
+  height: 100%;
+  width: 500px;
+  background: #00467F; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #A5CC82, #00467F); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #A5CC82, #00467F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  transition: .3s;
+  padding: 20px 20px 20px 20px;
+  outline: none;
+  display: flex;
+  align-items: center;
+
+
+  &__grid {
+    height: 40%;
+    width: 100%;
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(23%, 1fr));
+    justify-items: center;
+    align-items: center;
+  }
+
+  &__item {
+    width: 100px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 50%;
+    background: rgba(187, 222, 214, 0.3);
+  }
+}
+
+.show {
+  right: 0;
+}

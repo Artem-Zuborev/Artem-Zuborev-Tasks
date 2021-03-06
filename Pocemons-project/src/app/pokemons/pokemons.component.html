@@ -1,0 +1,14 @@
+<div class="pokeball">
+  <span matBadge="{{counterPoke}}" matBadgeOverlap="false" matBadgeSize="large"></span>
+  <img class="pokeball__img" (click)="active=!active" src="./assets/klipartz.com.png" alt="">
+</div>
+
+<div class="pokemon-box" [ngClass]="{'show':active}">
+  <div class="pokemon-box__grid">
+    <div class="pokemon-box__item" *ngFor="let pokemon of myPokemons">
+      <img src="https://projectpokemon.org/images/normal-sprite/{{pokemon}}.gif" alt="">
+    </div>
+  </div>
+</div>
+
+
