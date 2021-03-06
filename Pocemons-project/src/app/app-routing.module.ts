@@ -5,7 +5,6 @@ import {AboutPokemonsComponent} from './about-pokemons/about-pokemons.component'
 import {MyPokemonsComponent} from './my-pokemons/my-pokemons.component';
 import {PokemonInfoComponent} from './pokemon-info/pokemon-info.component';
 import {GameComponent} from './game/game.component';
-import {FormComponent} from './form/form.component';
 
 const routes: Routes = [
   {path: '', component: GameComponent},
@@ -13,7 +12,6 @@ const routes: Routes = [
   {path: 'pokemons-list', component: PokemonsListComponent},
   {path: 'my-pokemons', component: MyPokemonsComponent},
   {path: 'game', component: GameComponent},
-  {path: 'form', component: FormComponent},
   {path: 'pokemon-info/:id', component: PokemonInfoComponent}
 ];
 
