@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Pokemon} from '../pokemon.service';
 import {Subscription} from 'rxjs';
-import {map, mergeMap} from 'rxjs/operators';
+import {delay, map, mergeMap} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 
 
@@ -18,6 +18,7 @@ export class PokemonsListComponent implements OnInit, OnDestroy {
   name = '';
   offset: number;
   limitItemOnPage = 12;
+  loading = false;
 
   constructor(
     private pokemonService: Pokemon,
@@ -31,17 +32,19 @@ export class PokemonsListComponent implements OnInit, OnDestroy {
   }
 
   getPokemons(): void {
+    this.loading = true;
     this.offset = (this.page * this.limitItemOnPage) - this.limitItemOnPage;
     this.subscription = this.pokemonService.getApi(this.limitItemOnPage, this.offset)
+      .pipe(delay(1500))
       .subscribe((response: any) => {
         response.results.forEach(result => {
           this.http.get(result.url)
             .subscribe((uniqResponse: any) => {
-              this.pokemons.push(uniqResponse);
+              this.pokemons = [...this.pokemons, uniqResponse];
               this.pokemons.sort((a, b) => a.id > b.id ? 1 : -1);
             });
         });
-        console.log(this.pokemons);
+        this.loading = false;
       });
   }
 

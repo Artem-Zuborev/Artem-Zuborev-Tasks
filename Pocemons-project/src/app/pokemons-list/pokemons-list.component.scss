@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
 .pokemon-grid {
+  width: 100%;
   display: grid;
   grid-gap: 16px;
   padding: 20px;
@@ -17,8 +20,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #A1FFCE;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #FAFFD1, #A1FFCE);  /* Chrome 10-25, Safari 5.1-6 */
+  background: #A1FFCE; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FAFFD1, #A1FFCE); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 
@@ -35,11 +38,32 @@
     }
   }
 }
-.search{
+
+.search {
   position: absolute;
   top: 20px;
   right: 20px;
-
 }
 
+.loading-block {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
+  &__title {
+    font-family: 'Indie Flower', cursive;
+    font-size: 30px;
+    font-weight: bold;
+  }
+}
+
+.box__pagination {
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+}
