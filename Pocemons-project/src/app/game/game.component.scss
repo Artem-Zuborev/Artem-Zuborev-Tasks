@@ -46,11 +46,11 @@ button:focus {
   left: 50%;
   top: 70%;
   transform: translate(-50%, -50%);
-  border-radius: 10px;
-  border: 2px solid #F3F9A7;
+  border-radius: 30px;
+  border: 5px solid #3b9a9c;
   width: 400px;
   height: 100px;
-  box-shadow: inset 0px 0px 20px 0px #6A9113;
+  box-shadow: inset 0 0 20px 0 #1F6ED4;
 }
 
 .shadow__position {
@@ -70,10 +70,10 @@ button:focus {
   overflow: hidden;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 10px;
+  border-radius: 30px;
   width: 400px;
   height: 100px;
-  background: #161D31;
+  background: #9dd3a8;
 }
 
 .random__position {
@@ -142,7 +142,7 @@ button:focus {
   top: 0;
   transform: translateX(-50%);
   border: 10px solid transparent;
-  border-top: 20px solid #425DD8;
+  border-top: 20px solid #2A71B0;
   filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
 }
 
@@ -157,10 +157,31 @@ button:focus {
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
   border-radius: 50%;
 
+  &__poke {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__name {
+    margin-top: 30px;
+  }
+
   &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     font-family: 'Indie Flower', cursive;
     font-size: 50px;
     font-weight: bold;
+  }
+
+  &__pika {
+    width: 300px;
+    height: 300px;
+    outline: none;
   }
 }
 
@@ -182,7 +203,7 @@ button:focus {
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   backdrop-filter: blur(20px);
-  font-size: 25px;
+  font-size: 45px;
   color: #F3F9A7;
 }
 
@@ -215,7 +236,7 @@ button:focus {
 
 .rules-info {
   visibility: hidden;
-  z-index: 3;
+  z-index: 1003;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -229,6 +250,19 @@ button:focus {
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(40px);
 
+  &__title {
+    margin-bottom: 60px;
+    font-size: 60px;
+    font-family: 'Indie Flower', cursive;
+    font-weight: bold;
+  }
+
+  &__text {
+    font-size: 30px;
+    font-family: 'Indie Flower', cursive;
+    font-weight: bold;
+  }
+
   &__close {
     position: absolute;
     top: 20px;
@@ -236,6 +270,9 @@ button:focus {
     font-size: 50px;
     color: snow;
 
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
