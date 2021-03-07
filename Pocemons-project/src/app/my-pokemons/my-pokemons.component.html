@@ -3,7 +3,7 @@
     <ng-template ngbSlide *ngFor="let pok of arrayOfPokemons; let i = index">
       <div class="picsum-img-wrapper">
         <img [src]="pok.photo" alt="">
-        <p>{{pok.name}}</p>
+        <p class="picsum-img-wrapper__name">{{pok.name |uppercase}}</p>
       </div>
     </ng-template>
   </ngb-carousel>

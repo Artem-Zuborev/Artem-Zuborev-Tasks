@@ -51,7 +51,7 @@ export class MyPokemonsComponent implements OnInit {
                 if (this.newItem.name === this.myPokemons[i]) {
                   this.typePokemon = this.newItem.types[0].type.name;
                   this.abilities = this.newItem.abilities;
-                  this.experience = this.newItem.base_experience;
+                  this.experience = this.newItem.experience;
                   this.namePok = this.newItem.name;
                   this.idPok = this.newItem.id;
                   this.imgPok = this.newItem.sprites.other.dream_world.front_default;
