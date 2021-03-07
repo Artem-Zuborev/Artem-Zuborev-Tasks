@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
 .pokemon-grid {
+  position: relative;
   width: 100%;
   display: grid;
   grid-gap: 16px;
@@ -40,13 +41,74 @@
       filter: drop-shadow(0 0 40px #f1404b);
     }
   }
+
+  &__name {
+    margin-top: 30px;
+    font-family: 'Indie Flower', cursive;
+    font-size: 30px;
+    font-weight: 600;
+  }
+}
+
+mat-paginator {
+  background: rgba(0, 0, 0, 0);
+  color: #FFCC01 !important;
+  font-size: 20px;
+}
+
+.mat-select-value {
+  color: #FFCC01 !important;
+}
+
+.mat-paginator, .mat-paginator-page-size .mat-select-trigger {
+  color: #FFCC01 !important;
 }
 
 .search {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 120px;
+  left: 20px;
+
+  &__box {
+    padding: 10px;
+    display: block;
+    width: 300px;
+    border: none;
+    font-family: 'Indie Flower', cursive;
+    font-size: 25px;
+    font-weight: 600;
+    border-bottom: 1px solid #FFCC01;
+    color: #2D6BB4;
+    background: rgba(0, 0, 0, 0);
+
+    &:focus {
+      outline: none
+    }
+
+    &:focus ~ label,
+    &:valid ~ label {
+      top: -15px;
+      font-size: 14px;
+      color: #FFCC01;
+    }
+
+
+  }
 }
+
+label {
+  color: #FFCC01;
+  font-family: 'Indie Flower', cursive;
+  font-size: 28px;
+  position: absolute;
+  pointer-events: none;
+  left: 10px;
+  top: 15px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
 
 .loading-block {
   width: 100%;
