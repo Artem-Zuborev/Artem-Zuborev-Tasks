@@ -1,12 +1,14 @@
-.social-icon{
+.social-icon {
   width: 100%;
   display: flex;
   justify-content: center;
   margin-top: 65px;
-  .fab{
+
+  .fab {
     margin-right: 15px;
   }
-  & a{
+
+  & a {
     color: black;
   }
 }

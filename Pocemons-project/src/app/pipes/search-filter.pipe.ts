@@ -9,7 +9,7 @@ export class SearchFilterPipe implements PipeTransform {
     if (!name.trim()) {
       return pokemons;
     }
-    return pokemons.filter( item => {
+    return pokemons.filter(item => {
       return item.name.toLowerCase().includes(name);
     });
   }
