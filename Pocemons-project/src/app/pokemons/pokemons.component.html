@@ -1,13 +1,25 @@
 <div class="pokeball">
-  <span matBadge="{{counterPoke}}" matBadgeOverlap="false" matBadgeSize="large"></span>
+  <span class="pokeball__count" matBadge="{{counterPoke}}" matBadgeOverlap="false" matBadgeSize="large"></span>
   <img class="pokeball__img" (click)="active=!active" src="./assets/klipartz.com.png" alt="">
 </div>
 
 <div class="pokemon-box" [ngClass]="{'show':active}">
   <div class="pokemon-box__grid">
-    <div class="pokemon-box__item" *ngFor="let pokemon of myPokemons">
-      <img src="https://projectpokemon.org/images/normal-sprite/{{pokemon}}.gif" alt="">
-    </div>
+    <ng-template ngFor let-pokemon [ngForOf]="myPokemons" let-ind="index">
+      <div class="pokemon-box__item"
+           *ngIf="ind>=(pageEvent.pageIndex*pageEvent.pageSize) &&
+           ind<(pageEvent.pageIndex*pageEvent.pageSize+pageEvent.pageSize)">
+        <img src="https://projectpokemon.org/images/normal-sprite/{{pokemon}}.gif" alt="">
+      </div>
+    </ng-template>
+  </div>
+  <div class="pokemon-box__paginator">
+    <mat-paginator
+      (page)="pageEvent=$event"
+      [length]="counterPoke"
+      [pageSize]="sizePage"
+      [pageSizeOptions]="[9, 12, 15, 18]">
+    </mat-paginator>
   </div>
 </div>
 

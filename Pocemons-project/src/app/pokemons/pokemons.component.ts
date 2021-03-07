@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {interval} from 'rxjs';
+import {PageEvent} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-pokemons',
@@ -7,9 +8,15 @@ import {interval} from 'rxjs';
   styleUrls: ['./pokemons.component.scss']
 })
 export class PokemonsComponent implements OnInit {
+  pageEvent: PageEvent = {
+    length: 0,
+    pageSize: 9,
+    pageIndex: 0
+  };
   active = false;
   myPokemons: any;
   counterPoke: number;
+  sizePage = 9;
 
   constructor() {
   }
@@ -26,6 +33,9 @@ export class PokemonsComponent implements OnInit {
         return;
       }
       this.counterPoke = this.myPokemons.length;
+      this.pageEvent.length = this.myPokemons.length;
     });
   }
+
+
 }

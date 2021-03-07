@@ -1,15 +1,24 @@
 .pokeball {
   z-index: 100;
-  position: absolute;
+  position: fixed;
   right: 10px;
   top: 20px;
+  transition: .3s;
 
   &__img {
     width: 150px;
     height: 100px;
   }
-}
+  &:hover{
+    transform: scale3d(1.1, 1.1, 1.5);
+    filter: drop-shadow(0 0 40px #f1404b);
+  }
 
+}
+.mat-badge-content {
+  color: #fff;
+  background: #D94447;
+}
 .pokemon-box {
   position: fixed;
   z-index: 99;
@@ -47,8 +56,20 @@
     border-radius: 50%;
     background: rgba(187, 222, 214, 0.3);
   }
+
+  &__paginator{
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+  }
 }
 
 .show {
   right: 0;
+}
+.mat-paginator{
+  font-size: 16px;
+  border-radius: 20px;
+  background: rgba(187, 222, 214, 0.3);
+  color: black;
 }
