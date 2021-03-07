@@ -11,7 +11,7 @@ export class Pokemon {
   ) {
   }
 
-  getApi(limit?: number, offset?: number): any{
+  getApi(limit?: number, offset?: number): any {
     return this.http.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
   }
 }
