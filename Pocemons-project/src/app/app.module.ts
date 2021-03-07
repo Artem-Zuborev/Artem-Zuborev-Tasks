@@ -18,7 +18,7 @@ import {GameComponent} from './game/game.component';
 import { SocialBarComponent } from './social-bar/social-bar.component';
 import { PokemonsComponent } from './pokemons/pokemons.component';
 import {MatBadgeModule} from '@angular/material/badge';
-
+import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +43,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     BrowserAnimationsModule,
     NgbModule,
     MatBadgeModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
